@@ -1,0 +1,331 @@
+Do not delete files here.this is the original.
+
+NOTE:
+ DO not delete these files here they play important role.
+
+
+
+ nakuru/
+│
+├── README.md
+│
+├── app/
+│   │
+│   ├── .env
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── .prettierrc
+│   │
+│   ├── .vscode/
+│   │   └── extensions.json
+│   │
+│   ├── data/
+│   │   └── db.json
+│   │
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── playwright.config.ts
+│   ├── postcss.config.mjs
+│   ├── tailwind.config.mjs
+│   ├── tsconfig.json
+│   ├── vercel.json
+│   ├── vite.config.js
+│   ├── vitest.config.ts
+│   │
+│   ├── public/
+│   │   ├── infospace-meta.png
+│   │   ├── logo-dark.png
+│   │   ├── logo-light.png
+│   │   ├── manifest.webmanifest
+│   │   ├── offline.html
+│   │   ├── vite.svg
+│   │   │
+│   │   └── icons/
+│   │       ├── icon-192.png
+│   │       ├── icon-512.png
+│   │       └── icon-maskable.png
+│   │
+│   ├── src/
+│   │   │
+│   │   ├── App.vue
+│   │   ├── main.js
+│   │   └── style.css
+│   │
+│   │   ├── api/
+│   │   │   ├── admin.api.ts
+│   │   │   ├── auth.api.ts
+│   │   │   ├── dashboard.api.ts
+│   │   │   ├── dumpingSites.api.ts
+│   │   │   ├── errorCodes.ts
+│   │   │   ├── fleet.api.ts
+│   │   │   ├── http.ts
+│   │   │   ├── reports.api.ts
+│   │   │   ├── tickets.api.ts
+│   │   │   │
+│   │   │   ├── audit.api.ts
+│   │   │   ├── community.api.ts
+│   │   │   ├── contractors.api.ts
+│   │   │   ├── finance.api.ts
+│   │   │   ├── notifications.api.ts
+│   │   │   ├── spatial.api.ts
+│   │   │   └── workforce.api.ts
+│   │   │
+│   │   ├── assets/
+│   │   │   └── ...
+│   │   │
+│   │   ├── components/
+│   │   │   │
+│   │   │   ├── camera/
+│   │   │   │   └── ...
+│   │   │   │
+│   │   │   ├── common/
+│   │   │   │   └── ...
+│   │   │   │
+│   │   │   ├── dashboard/
+│   │   │   │   ├── ...
+│   │   │   │   ├── TrendChart.vue
+│   │   │   │   └── HistoricalMetricCard.vue
+│   │   │   │
+│   │   │   ├── fleet/
+│   │   │   │   ├── ...
+│   │   │   │   ├── VehicleStatusCard.vue
+│   │   │   │   ├── PositionHistory.vue
+│   │   │   │   ├── RouteComparison.vue
+│   │   │   │   └── DeviationAlertCard.vue
+│   │   │   │
+│   │   │   ├── map/
+│   │   │   │   ├── ...
+│   │   │   │   ├── BuildingStatusLayer.vue
+│   │   │   │   ├── HotspotLayer.vue
+│   │   │   │   ├── ZoneOverlay.vue
+│   │   │   │   ├── SpatialFilterPanel.vue
+│   │   │   │   └── CollectionStatusLegend.vue
+│   │   │   │
+│   │   │   ├── offline/
+│   │   │   │   └── ...
+│   │   │   │
+│   │   │   ├── reports/
+│   │   │   │   ├── ...
+│   │   │   │   ├── DisposalLocationCard.vue
+│   │   │   │   └── IncidentClusterPanel.vue
+│   │   │   │
+│   │   │   ├── tickets/
+│   │   │   │   └── ...
+│   │   │   │
+│   │   │   ├── dumpingSites/
+│   │   │   │   ├── DumpingSiteCard.vue
+│   │   │   │   ├── DumpingSiteHistory.vue
+│   │   │   │   └── RemediationHistory.vue
+│   │   │   │
+│   │   │   ├── workforce/
+│   │   │   │   ├── AttendanceForm.vue
+│   │   │   │   ├── AttendanceStatusCard.vue
+│   │   │   │   ├── ShiftPerformanceCard.vue
+│   │   │   │   ├── CrewStatusTable.vue
+│   │   │   │   ├── PanicAlertButton.vue
+│   │   │   │   └── SafetyAlertCard.vue
+│   │   │   │
+│   │   │   ├── notifications/
+│   │   │   │   ├── NotificationBell.vue
+│   │   │   │   ├── NotificationList.vue
+│   │   │   │   ├── NotificationCard.vue
+│   │   │   │   ├── PickupNotificationCard.vue
+│   │   │   │   ├── ZoneAlertCard.vue
+│   │   │   │   └── PaymentReminderCard.vue
+│   │   │   │
+│   │   │   ├── financial/
+│   │   │   │   ├── FeeSummaryCard.vue
+│   │   │   │   ├── FeeCollectionTable.vue
+│   │   │   │   ├── PaymentForm.vue
+│   │   │   │   ├── PaymentHistory.vue
+│   │   │   │   ├── PaymentStatusCard.vue
+│   │   │   │   ├── BuildingComplianceCard.vue
+│   │   │   │   └── CollectionRateChart.vue
+│   │   │   │
+│   │   │   ├── contractors/
+│   │   │   │   ├── ContractorPerformanceCard.vue
+│   │   │   │   └── SLAComplianceTable.vue
+│   │   │   │
+│   │   │   ├── community/
+│   │   │   │   ├── ChatRoom.vue
+│   │   │   │   ├── CommunityPost.vue
+│   │   │   │   ├── CommunityPostForm.vue
+│   │   │   │   ├── CommunityModerationPanel.vue
+│   │   │   │   ├── CleanupEventCard.vue
+│   │   │   │   ├── CleanupEventForm.vue
+│   │   │   │   └── EventParticipantList.vue
+│   │   │   │
+│   │   │   └── audit/
+│   │   │       ├── AuditLogTable.vue
+│   │   │       └── AuditLogFilters.vue
+│   │   │
+│   │   ├── composables/
+│   │   │   ├── useCamera.ts
+│   │   │   ├── useGeolocation.ts
+│   │   │   ├── useOfflineQueue.ts
+│   │   │   ├── useOnlineStatus.ts
+│   │   │   ├── usePermission.ts
+│   │   │   ├── usePolling.ts
+│   │   │   │
+│   │   │   ├── useNotifications.ts
+│   │   │   ├── usePhotoUpload.ts
+│   │   │   ├── usePayment.ts
+│   │   │   └── useAttendance.ts
+│   │   │
+│   │   ├── config/
+│   │   │   ├── constants.ts
+│   │   │   ├── env.ts
+│   │   │   ├── permissions.ts
+│   │   │   └── roles.ts
+│   │   │
+│   │   ├── helpers/
+│   │   │   ├── date.ts
+│   │   │   ├── geo.ts
+│   │   │   ├── format.ts
+│   │   │   ├── image.ts
+│   │   │   └── validators.ts
+│   │   │
+│   │   ├── i18n/
+│   │   │   ├── index.ts
+│   │   │   └── locales/
+│   │   │       ├── en.json
+│   │   │       └── sw.json
+│   │   │
+│   │   ├── layouts/
+│   │   │   ├── AdminLayout.vue
+│   │   │   ├── AuthLayout.vue
+│   │   │   ├── CitizenLayout.vue
+│   │   │   └── FieldLayout.vue
+│   │   │
+│   │   ├── offline/
+│   │   │   ├── db.ts
+│   │   │   ├── queue.ts
+│   │   │   ├── syncManager.ts
+│   │   │   └── sw.ts
+│   │   │
+│   │   ├── providers/
+│   │   │   ├── googleMaps.ts
+│   │   │   └── toast.ts
+│   │   │
+│   │   ├── router/
+│   │   │   ├── guards.ts
+│   │   │   ├── index.ts
+│   │   │   │
+│   │   │   └── routes/
+│   │   │       ├── admin.routes.ts
+│   │   │       ├── citizen.routes.ts
+│   │   │       └── field.routes.ts
+│   │   │
+│   │   ├── store/
+│   │   │   ├── auth.store.ts
+│   │   │   ├── dashboard.store.ts
+│   │   │   ├── fleet.store.ts
+│   │   │   ├── offline.store.ts
+│   │   │   ├── reports.store.ts
+│   │   │   ├── tickets.store.ts
+│   │   │   ├── ui.store.ts
+│   │   │   │
+│   │   │   ├── audit.store.ts
+│   │   │   ├── community.store.ts
+│   │   │   ├── contractors.store.ts
+│   │   │   ├── finance.store.ts
+│   │   │   ├── notifications.store.ts
+│   │   │   ├── spatial.store.ts
+│   │   │   └── workforce.store.ts
+│   │   │
+│   │   ├── types/
+│   │   │   ├── api.ts
+│   │   │   ├── hotspot.ts
+│   │   │   ├── report.ts
+│   │   │   ├── route.ts
+│   │   │   ├── ticket.ts
+│   │   │   ├── user.ts
+│   │   │   ├── vehicle.ts
+│   │   │   ├── zone.ts
+│   │   │   │
+│   │   │   ├── attendance.ts
+│   │   │   ├── auditLog.ts
+│   │   │   ├── building.ts
+│   │   │   ├── cleanupEvent.ts
+│   │   │   ├── communityPost.ts
+│   │   │   ├── contractor.ts
+│   │   │   ├── deviationAlert.ts
+│   │   │   ├── dumpingSite.ts
+│   │   │   ├── efficiencyIndex.ts
+│   │   │   ├── feeLedger.ts
+│   │   │   ├── incident.ts
+│   │   │   ├── notification.ts
+│   │   │   ├── payment.ts
+│   │   │   ├── positionLog.ts
+│   │   │   ├── routeAudit.ts
+│   │   │   └── shift.ts
+│   │   │
+│   │   └── views/
+│   │       │
+│   │       ├── admin/
+│   │       │   ├── CommandCenterView.vue
+│   │       │   ├── DeviationAlertsView.vue
+│   │       │   ├── DumpingSitesView.vue
+│   │       │   ├── EfficiencyIndexView.vue
+│   │       │   ├── FleetMapView.vue
+│   │       │   ├── RouteAuditView.vue
+│   │       │   ├── TicketsView.vue
+│   │       │   ├── UsersRolesView.vue
+│   │       │   │
+│   │       │   ├── TrendAnalyticsView.vue
+│   │       │   ├── ContractorPerformanceView.vue
+│   │       │   ├── SpatialLedgerView.vue
+│   │       │   ├── HotspotModelView.vue
+│   │       │   ├── ZoningOverlayView.vue
+│   │       │   ├── AttendanceView.vue
+│   │       │   ├── ShiftPerformanceView.vue
+│   │       │   ├── SafetyAlertsView.vue
+│   │       │   ├── NotificationsView.vue
+│   │       │   ├── FinancialOversightView.vue
+│   │       │   ├── PaymentsView.vue
+│   │       │   ├── PaymentComplianceView.vue
+│   │       │   └── AuditLogsView.vue
+│   │       │
+│   │       ├── auth/
+│   │       │   ├── CitizenLogin.vue
+│   │       │   ├── Forbidden.vue
+│   │       │   ├── NotFound.vue
+│   │       │   └── StaffLogin.vue
+│   │       │
+│   │       ├── citizen/
+│   │       │   ├── ConsentView.vue
+│   │       │   ├── MyReportsView.vue
+│   │       │   ├── ReportDetailView.vue
+│   │       │   ├── ReportIssueView.vue
+│   │       │   │
+│   │       │   ├── DisposalGuidanceView.vue
+│   │       │   ├── NotificationsView.vue
+│   │       │   ├── PaymentView.vue
+│   │       │   ├── PaymentHistoryView.vue
+│   │       │   ├── CommunityView.vue
+│   │       │   └── CleanupEventsView.vue
+│   │       │
+│   │       └── field/
+│   │           ├── CloseTicketView.vue
+│   │           ├── MyTicketsView.vue
+│   │           ├── PendingSyncView.vue
+│   │           │
+│   │           ├── AttendanceView.vue
+│   │           ├── ShiftView.vue
+│   │           └── SafetyAlertView.vue
+│   │
+│   ├── tests/
+│   │   ├── e2e/
+│   │   │   └── ...
+│   │   └── unit/
+│   │       └── ...
+│   │
+│   └── zOldcodes/
+│       └── package.json
+│
+├── .git/
+│   └── ...
+
+
+do not delete any file here.
