@@ -1,21 +1,43 @@
 {
-  "jobs": [
-    { "title": "Ux Designer", "id": 1, "details": "lorem" },
-    { "title": "Web Developer", "id": 2, "details": "lorem" },
-    { "title": "Backend Engineer", "id": 1, "details": "lorem" }
+  "reports": [
+    { "id": 1, "title": "Illegal dumping", "location": "Kibera", "status": "In review", "updated": "2 hours ago" },
+    { "id": 2, "title": "Blocked drain", "location": "Mikocheni", "status": "Assigned", "updated": "Today" },
+    { "id": 3, "title": "Overflowing bin", "location": "Kisumu", "status": "Resolved", "updated": "2 days ago" }
+  ],
+  "tickets": [
+    { "id": 1, "name": "Illegal dump cleanup", "zone": "Zone A", "status": "Assigned", "due": "Today" },
+    { "id": 2, "name": "Drain blockage", "zone": "Zone C", "status": "In progress", "due": "Tomorrow" },
+    { "id": 3, "name": "Overflowing bin", "zone": "Zone B", "status": "Pending", "due": "2 days" }
   ],
   "posts": [
     {
       "id": 1,
-      "title": "Welcome to the new blog",
-      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-      "tags": ["webdev", "coding", "news"]
+      "author": "Asha M.",
+      "time": "2 hours ago",
+      "category": "Cleanup",
+      "text": "Community cleanup this Saturday from 8:00am to noon. Please bring gloves and reusable bags.",
+      "likes": 18,
+      "comments": 5,
+      "location": "Kibera"
     },
     {
       "id": 2,
-      "title": "top 5 CSS tips",
-      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-      "tags": ["webdev", "coding", "news"]
+      "author": "Samuel N.",
+      "time": "Yesterday",
+      "category": "Awareness",
+      "text": "We are mapping blocked drains around the main market. Report any flood-prone areas immediately.",
+      "likes": 24,
+      "comments": 3,
+      "location": "Mombasa Road"
     }
+  ],
+  "pendingItems": [
+    { "id": 1, "name": "Illegal dump cleanup entry", "meta": "Zone A · 8:40 AM", "status": "Queued" },
+    { "id": 2, "name": "Drain inspection note", "meta": "Zone C · 9:10 AM", "status": "Queued" },
+    { "id": 3, "name": "Safety checklist photo", "meta": "Shift 2 · 10:30 AM", "status": "Failed" }
+  ],
+  "events": [
+    { "id": 1, "name": "Riverbank cleanup", "date": "Sat, 9:00 AM", "location": "Kisumu" },
+    { "id": 2, "name": "School waste drive", "date": "Mon, 1:30 PM", "location": "Nairobi" }
   ]
 }
