@@ -1,1 +1,76 @@
-{"app":"Nasafisha"}
+{
+  "app": "Nasafisha",
+  "tagline": "Nakuru Municipal Waste Management",
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "search": "Search",
+    "filter": "Filter",
+    "refresh": "Refresh",
+    "loading": "Loading…",
+    "retry": "Retry",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "signOut": "Sign out",
+    "signIn": "Sign in",
+    "seeAll": "See all",
+    "none": "None",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "nav": {
+    "home": "Home",
+    "reports": "My reports",
+    "reportNew": "Report an issue",
+    "payments": "Payments",
+    "community": "Community",
+    "notifications": "Notifications",
+    "guidance": "Disposal guidance",
+    "cleanupEvents": "Cleanup events",
+    "tickets": "My tickets",
+    "sync": "Pending sync",
+    "safety": "Safety alerts",
+    "attendance": "Attendance",
+    "shift": "Shift",
+    "dashboard": "Dashboard",
+    "scorecard": "SLA scorecard",
+    "ledger": "Evidence ledger",
+    "fleet": "Fleet map",
+    "audit": "Audit logs",
+    "admin": "Admin"
+  },
+  "auth": {
+    "staffLogin": "Staff login",
+    "citizenLogin": "Citizen sign-in",
+    "contractorLogin": "Contractor portal",
+    "welcomeBack": "Welcome back",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone number",
+    "otp": "One-time code",
+    "badgeNumber": "Badge number",
+    "contractorCode": "Contractor code",
+    "accessKey": "Access key",
+    "pin": "PIN"
+  },
+  "status": {
+    "received": "Received",
+    "inProgress": "In progress",
+    "resolved": "Resolved",
+    "stale": "Stale",
+    "met": "SLA met",
+    "breached": "SLA breached"
+  },
+  "errors": {
+    "forbidden": "Permission required",
+    "notFound": "Page not found",
+    "network": "Network unavailable. Changes are queued for sync."
+  },
+  "offline": {
+    "online": "Online",
+    "offline": "Offline",
+    "pendingSync": "Pending sync"
+  }
+}

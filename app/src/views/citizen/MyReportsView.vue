@@ -61,7 +61,7 @@ onMounted(async () => {
   try {
     loading.value = true;
     reports.value = await reportsApi.list();
-  } catch (err) {
+  } catch {
     // fallback: keep some defaults when API is unavailable
     error.value = 'Could not load reports, showing cached data.';
     reports.value = [

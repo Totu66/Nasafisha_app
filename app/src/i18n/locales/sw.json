@@ -1,1 +1,76 @@
-{"app":"Nasafisha"}
+{
+  "app": "Nasafisha",
+  "tagline": "Mfumo wa Usimamizi wa Taka za Mtaa Nakuru",
+  "common": {
+    "save": "Hifadhi",
+    "cancel": "Ghairi",
+    "submit": "Wasilisha",
+    "search": "Tafuta",
+    "filter": "Chuja",
+    "refresh": "Sasisha",
+    "loading": "Inapakia…",
+    "retry": "Jaribu tena",
+    "close": "Funga",
+    "back": "Rudi",
+    "next": "Endelea",
+    "signOut": "Toka",
+    "signIn": "Ingia",
+    "seeAll": "Ona zote",
+    "none": "Hakuna",
+    "yes": "Ndiyo",
+    "no": "Hapana"
+  },
+  "nav": {
+    "home": "Nyumbani",
+    "reports": "Ripoti zangu",
+    "reportNew": "Ripoti tatizo",
+    "payments": "Malipo",
+    "community": "Jamii",
+    "notifications": "Arifa",
+    "guidance": "Mwongozo wa taka",
+    "cleanupEvents": "Matukio ya usafi",
+    "tickets": "Tiketi zangu",
+    "sync": "Zinasubiri kusawazishwa",
+    "safety": "Tahadhari za usalama",
+    "attendance": "Mahudhurio",
+    "shift": "Zamu",
+    "dashboard": "Dashibodi",
+    "scorecard": "Kadi ya SLA",
+    "ledger": "Daftari uthibitisho",
+    "fleet": "Ramani ya usafirishaji",
+    "audit": "Kumbukumbu za ukaguzi",
+    "admin": "Msimamizi"
+  },
+  "auth": {
+    "staffLogin": "Kuingia kwa wafanyakazi",
+    "citizenLogin": "Kuingia kwa raia",
+    "contractorLogin": "Malango ya mkandarasi",
+    "welcomeBack": "Karibu tena",
+    "email": "Barua pepe",
+    "password": "Nenosiri",
+    "phone": "Namba ya simu",
+    "otp": "Msimbo wa mara moja",
+    "badgeNumber": "Namba ya kitambulisho",
+    "contractorCode": "Msimbo wa mkandarasi",
+    "accessKey": "Ufunguo wa ufikiaji",
+    "pin": "PIN"
+  },
+  "status": {
+    "received": "Imepokelewa",
+    "inProgress": "Inaendelea",
+    "resolved": "Imekamilika",
+    "stale": "Imechelewa",
+    "met": "SLA imekamilika",
+    "breached": "SLA imevunjwa"
+  },
+  "errors": {
+    "forbidden": "Inahitaji ruhusa",
+    "notFound": "Ukurasa haupatikani",
+    "network": "Mtandau haupatikani. Mabadiliko yanasubiri kusawazishwa."
+  },
+  "offline": {
+    "online": "Mtandaoni",
+    "offline": "Nje ya mtandao",
+    "pendingSync": "Zinasubiri kusawazishwa"
+  }
+}

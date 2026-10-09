@@ -56,7 +56,7 @@ onMounted(async () => {
   try {
     loading.value = true;
     tickets.value = await ticketsApi.list();
-  } catch (err) {
+  } catch {
     error.value = 'Could not load tickets, showing cached data.';
     tickets.value = [
       { id: 1, name: 'Illegal dump cleanup', zone: 'Zone A', status: 'Assigned', due: 'Today' },
