@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { RouteRecordRaw } from 'vue-router'
 import FieldLayout from '@/layouts/FieldLayout.vue'
 import { ROLES } from '@/config/roles'
@@ -34,3 +35,31 @@ const fieldRoutes: RouteRecordRaw[] = [
 ]
 
 export default fieldRoutes
+=======
+import MyTicketsView from '../../views/field/MyTicketsView.vue';
+import PendingSyncView from '../../views/field/PendingSyncView.vue';
+import SafetyAlertView from '../../views/field/SafetyAlertView.vue';
+
+export default [
+  {
+    path: '/field',
+    name: 'FieldHome',
+    redirect: '/field/tickets',
+  },
+  {
+    path: '/field/tickets',
+    name: 'FieldTickets',
+    component: MyTicketsView,
+  },
+  {
+    path: '/field/sync',
+    name: 'FieldSync',
+    component: PendingSyncView,
+  },
+  {
+    path: '/field/safety',
+    name: 'FieldSafety',
+    component: SafetyAlertView,
+  },
+];
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

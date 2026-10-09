@@ -1,12 +1,25 @@
 {
+<<<<<<< HEAD
   "name": "app",
+=======
+  "name": "nasafisha-app",
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+<<<<<<< HEAD
     "preview": "vite preview"
+=======
+    "preview": "vite preview",
+    "mock": "json-server --watch data/db.json --port 3000",
+    "lint": "eslint . --ext .js,.ts,.vue",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test"
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.0",
@@ -22,7 +35,18 @@
     "vue-router": "^5.0.7"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@vitejs/plugin-vue": "^6.0.6",
     "vite": "^8.0.12"
+=======
+    "@playwright/test": "^1.49.1",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "eslint": "^9.16.1",
+    "eslint-plugin-vue": "^9.0.0",
+    "prettier": "^3.3.1",
+    "typescript": "^5.7.2",
+    "vite": "^8.0.12",
+    "vitest": "^2.1.7"
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0
   }
 }

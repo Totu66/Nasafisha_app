@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { http } from './http'
 import type { ApiSuccess } from '@/types/api'
 import type { CrewAccount, CrewStatus } from '@/types/crew'
@@ -16,3 +17,6 @@ export async function fetchCrewAccounts(): Promise<CrewAccount[]> {
 export async function resetCrewPin(accountId: string, pin: string): Promise<void> {
   await http.post(`/supervisor/crew-accounts/${accountId}/pin`, { pin })
 }
+=======
+export const workforceApi = {};
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

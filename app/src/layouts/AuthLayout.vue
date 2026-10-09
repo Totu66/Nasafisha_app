@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup lang="ts">
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue'
 </script>
@@ -13,3 +14,6 @@ import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue'
     </main>
   </div>
 </template>
+=======
+<template><div class="min-h-screen bg-slate-100"><h2 class="p-4 text-lg font-semibold">AuthLayout</h2><slot /></div></template><script setup lang="ts"></script>
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

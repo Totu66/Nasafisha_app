@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { ROLES, type Role } from './roles'
 
 // Pages and navigation check permissions, never role names.
@@ -48,3 +49,6 @@ export const ROLE_PERMISSIONS: Record<Role, readonly Permission[]> = {
 export function roleHasPermission(role: Role, permission: Permission): boolean {
   return ROLE_PERMISSIONS[role].includes(permission)
 }
+=======
+export const permissions = {};
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

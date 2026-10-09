@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { adminLogin, type AdminLoginPayload } from '@/api/auth.api'
@@ -44,3 +45,6 @@ export const useAuthStore = defineStore('auth', () => {
 
   return { token, user, role, isAuthenticated, setSession, logout, loginAdmin }
 })
+=======
+export const authStore = {};
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

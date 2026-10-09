@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -23,3 +24,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+=======
+node_modules
+.dist
+.vite
+.env
+coverage
+playwright-report
+**/.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.local
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

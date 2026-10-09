@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export type DeviationAlertStatus = 'open' | 'cleared' | 'authorised'
 
 export interface DeviationAlert {
@@ -11,3 +12,6 @@ export interface DeviationAlert {
   thresholdMinutes: number // default 10
   status: DeviationAlertStatus
 }
+=======
+export interface DeviationAlert {}
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

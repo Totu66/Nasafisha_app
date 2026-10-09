@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import type { CrewLiveStatus, CrewStatus } from '@/types/crew'
@@ -42,3 +43,7 @@ const STYLES: Record<CrewLiveStatus, string> = {
     </table>
   </div>
 </template>
+=======
+<template><section class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"><h3 class="text-sm font-semibold text-slate-800">CrewStatusTable</h3></section></template>
+<script setup lang="ts"></script>
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

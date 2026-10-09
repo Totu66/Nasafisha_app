@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { computed, ref } from 'vue'
 import type { QueuedAction } from '@/types/offline'
 
@@ -15,3 +16,6 @@ export function useOfflineQueue() {
 
   return { actions, pendingCount, isSyncing, syncNow }
 }
+=======
+export function useOfflineQueue() { return {}; }
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { onBeforeUnmount, ref } from 'vue'
 import type { Coordinates } from '@/helpers/geo'
 
@@ -35,3 +36,6 @@ export function useGeolocation() {
 
   return { position, error, start, stop }
 }
+=======
+export function useGeolocation() { return {}; }
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

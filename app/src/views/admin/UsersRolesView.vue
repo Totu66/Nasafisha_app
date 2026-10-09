@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
@@ -76,3 +77,7 @@ async function run(action: () => Promise<void>) {
     <p class="mt-3 text-sm text-stone-600">{{ t('admin.accounts.rules') }}</p>
   </section>
 </template>
+=======
+<template><main class="p-6"><h1 class="text-xl font-semibold text-slate-800">UsersRolesView</h1></main></template>
+<script setup lang="ts"></script>
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

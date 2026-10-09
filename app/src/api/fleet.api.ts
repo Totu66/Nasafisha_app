@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { http } from './http'
 import type { ApiSuccess } from '@/types/api'
 import type { DeviationAlert } from '@/types/deviationAlert'
@@ -13,3 +14,6 @@ export async function fetchOpenDeviationAlerts(): Promise<DeviationAlert[]> {
 export async function authoriseDeviation(alertId: string): Promise<void> {
   await http.post(`/deviation-alerts/${alertId}/authorise`)
 }
+=======
+export const fleetApi = {};
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { http } from './http'
 import type { ApiSuccess } from '@/types/api'
 import type { AdminTicketDetail, AdminTicketRow } from '@/types/ticketAdmin'
@@ -34,3 +35,19 @@ export async function updateAccountRole(id: string, role: Role): Promise<void> {
 export async function setAccountActive(id: string, active: boolean): Promise<void> {
   await http.patch(`/admin/accounts/${id}`, { active })
 }
+=======
+import httpClient from './http';
+
+export const adminApi = {
+  async getDashboard() {
+    const res = await httpClient.get('/dashboard');
+    return res.data;
+  },
+  async getAuditLogs() {
+    const res = await httpClient.get('/auditLogs');
+    return res.data;
+  },
+};
+
+export default adminApi;
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

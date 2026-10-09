@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'url';
@@ -11,3 +12,11 @@ export default defineConfig({
     }
 }
 })
+=======
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [vue()],
+});
+>>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0
