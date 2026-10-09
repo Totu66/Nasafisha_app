@@ -1,1 +1,215 @@
-{}
+{
+  "common": { "signOut": "Toka" },
+  "nav": {
+    "overview": "Muhtasari",
+    "fleetMap": "Ramani ya magari",
+    "tickets": "Tiketi",
+    "dumpingSites": "Maeneo ya utupaji taka",
+    "efficiencyIndex": "Kielezo cha Ufanisi",
+    "accounts": "Akaunti"
+  },
+  "roles": {
+    "executive": "Mtendaji",
+    "operations_manager": "Meneja wa Operesheni",
+    "county_ict_admin": "Msimamizi wa TEHAMA wa Kaunti",
+    "field_supervisor": "Msimamizi wa Uwandani",
+    "field_crew": "Wafanyakazi wa Uwandani",
+    "citizen": "Mwananchi"
+  },
+  "adminLogin": {
+    "title": "Ingia kwa akaunti yako ya kaunti",
+    "email": "Barua pepe ya kazi",
+    "password": "Nenosiri",
+    "submit": "Ingia",
+    "submitting": "Inaingia…",
+    "lockedHelp": "Umefungiwa nje? Wasiliana na Msimamizi wa TEHAMA wa Kaunti.",
+    "errors": {
+      "invalid": "Barua pepe au nenosiri si sahihi.",
+      "locked": "Akaunti yako imefungwa. Wasiliana na Msimamizi wa TEHAMA wa Kaunti.",
+      "inactive": "Akaunti hii imezimwa. Wasiliana na Msimamizi wa TEHAMA wa Kaunti.",
+      "generic": "Imeshindwa kuingia. Angalia mtandao wako ujaribu tena."
+    },
+  
+
+
+
+  
+  "common": {
+    "online": "Mtandaoni",
+    "offline": "Nje ya mtandao",
+    "loading": "Inapakia…",
+    "retry": "Jaribu tena",
+    "loadError": "Imeshindwa kupakia. Angalia mtandao wako."
+  },
+  "ticketStatus": {
+    "assigned": "Imekabidhiwa",
+    "in_progress": "Inaendelea",
+    "closing": "Inafungwa",
+    "resolved": "Imekamilika",
+    "blocked": "Imekwama"
+  },
+  "issueType": {
+    "missed_collection": "Taka hazikuzolewa",
+    "illegal_dumping": "Utupaji taka haramu"
+  },
+  "field": {
+    "nav": { "tickets": "Tiketi", "doneToday": "Zilizokamilika leo" },
+    "tickets": {
+      "hello": "Habari, {name}",
+      "vehicle": "Gari {plate}",
+      "assigned": "Ulizokabidhiwa ({count})",
+      "empty": "Huna tiketi zilizokabidhiwa kwa sasa."
+    },
+    "detail": {
+      "locating": "Inatafuta eneo lako…",
+      "distance": "Mita {meters} kutoka eneo",
+      "mapPlaceholder": "Ramani: wewe na eneo",
+      "residentNote": "Maelezo ya mkazi: \"{note}\"",
+      "beforePhotoAlt": "Picha ya mkazi ya taka",
+      "openMaps": "Fungua kwenye Ramani",
+      "takeAfterPhoto": "Piga picha ya baada",
+      "geo": {
+        "denied": "Eneo limezimwa. Liwashe ili uone umbali kutoka eneo.",
+        "unavailable": "Imeshindwa kupata eneo lako."
+      }
+    },
+    "closure": {
+      "title": "Funga tiketi",
+      "insideLimit": "Mita {meters} kutoka kwenye ripoti. Ndani ya kikomo.",
+      "mismatchTitle": "Picha iko mita {meters} kutoka kwenye ripoti",
+      "mismatchBody": "Kufunga kunahitaji picha ndani ya mita {limit}. Rudi eneo hilo upige tena, au mwombe msimamizi aidhinishe.",
+      "before": "Kabla",
+      "after": "Baada",
+      "beforeAt": "Kabla {time}",
+      "afterAt": "Baada {time}",
+      "noAfterPhoto": "Bado hakuna picha ya baada",
+      "retake": "Piga tena eneo hilo",
+      "askSupervisor": "Mwombe msimamizi aidhinishe",
+      "closeTicket": "Funga tiketi",
+      "approvalSent": "Ombi limetumwa. Msimamizi ataidhinisha au kurudisha.",
+      "approvalFailed": "Imeshindwa kutuma ombi. Jaribu tena."
+    },
+    "doneToday": {
+      "title": "Zilizokamilika leo",
+      "empty": "Hakuna kilichofungwa leo.",
+      "help": "Zimehifadhiwa salama kwenye simu yako. Zitatumwa zenyewe mtandao ukirudi, na saa uliyopiga picha.",
+      "trySending": "Jaribu kutuma sasa"
+    }
+  },
+  "offline": {
+    "offlinePrefix": "Nje ya mtandao.",
+    "waiting": "Kitendo {count} kinasubiri kutumwa | Vitendo {count} vinasubiri kutumwa",
+    "status": { "pending": "Inasubiri kutumwa", "sent": "Imetumwa", "failed": "Imeshindwa" }
+  }
+
+
+  {
+  "field": {
+    "nav": {
+      "crews": "Timu",
+      "alerts": "Tahadhari ({count})",
+      "resetPin": "Weka PIN upya"
+    }
+  },
+  "supervisor": {
+    "crews": {
+      "title": "Hali ya timu",
+      "crew": "Timu",
+      "vehicle": "Gari",
+      "status": "Hali",
+      "tickets": "Tiketi",
+      "live": {
+        "en_route": "Njiani",
+        "off_route": "Nje ya njia",
+        "stale": "Hakuna data · dakika {minutes}",
+        "idle": "Imesimama"
+      }
+    },
+    "needs": {
+      "title": "Zinakusubiri ({count})",
+      "none": "Hakuna kinachokusubiri kwa sasa.",
+      "deviation": "Tahadhari ya kupotoka · {crew}",
+      "closing": "Ombi la kufunga · {crew}"
+    },
+    "alerts": {
+      "pageTitle": "Tahadhari za njia",
+      "title": "{crew} iko nje ya njia",
+      "body": "{plate} iko mita {meters} kutoka njia yake kwa dakika {minutes}.",
+      "callCrew": "Piga simu timu",
+      "authorise": "Weka kama imeidhinishwa",
+      "help": "Hujiondoa lori likirudi. Kikomo ni mita {meters} kwa dakika {minutes}. Kila alama huhifadhiwa kwenye rekodi ya zamu.",
+      "mapPlaceholder": "Ramani: iliyopangwa na halisi",
+      "empty": "Hakuna tahadhari za njia kwa sasa.",
+      "failed": "Imeshindwa kuidhinisha. Jaribu tena."
+    },
+    "approve": {
+      "title": "Idhinisha kufunga?",
+      "requestedBy": "Imeombwa na {name} · {crew}",
+      "distance": "Mita {meters} kutoka kwenye ripoti. Kikomo ni mita {limit}.",
+      "recorded": "Idhini yako inarekodiwa kwa jina lako.",
+      "sendBack": "Rudisha",
+      "approve": "Idhinisha na ufunge",
+      "failed": "Imeshindwa kuhifadhi uamuzi wako. Jaribu tena."
+    },
+    "pin": {
+      "title": "Weka PIN upya",
+      "locked": "Akaunti imefungwa · PIN 3 zisizo sahihi saa {time}",
+      "lockedChip": "Imefungwa",
+      "newPin": "PIN mpya",
+      "help": "Waambie ana kwa ana. Inafanya kazi mara moja.",
+      "invalid": "PIN lazima iwe na tarakimu 4 hadi 6.",
+      "save": "Hifadhi PIN mpya",
+      "cancel": "Ghairi",
+      "saved": "PIN mpya imehifadhiwa.",
+      "failed": "Imeshindwa kuhifadhi PIN. Jaribu tena.",
+      "empty": "Hakuna akaunti za wafanyakazi za kuonyesha."
+    }
+  },
+  "admin": {
+    "tickets": {
+      "title": "Tiketi",
+      "reference": "Rejea",
+      "type": "Aina",
+      "zone": "Eneo",
+      "crew": "Timu",
+      "status": "Hali",
+      "empty": "Hakuna tiketi zinazolingana na kichujio hiki.",
+      "tabs": { "all": "Zote", "open": "Zilizo wazi", "awaiting": "Zinasubiri idhini", "resolved": "Zilizokamilika" }
+    },
+    "ticketDetail": {
+      "back": "Tiketi",
+      "distance": "Mita {meters} kutoka kwenye ripoti",
+      "pending": "Imeombwa na {name}, {crew}. Inahitaji idhini ya msimamizi kabla ya kufungwa.",
+      "audit": "Kumbukumbu ya ukaguzi"
+    },
+    "audit": {
+      "submitted": "Ripoti imetumwa",
+      "verified": "Ripoti imethibitishwa",
+      "assigned": "Imekabidhiwa",
+      "closure_blocked": "Jaribio la kufunga, limezuiwa",
+      "closure_approved": "Kufunga kumeidhinishwa",
+      "closure_overridden": "Kufunga kumepitishwa na msimamizi",
+      "resolved": "Imekamilika"
+    },
+    "accounts": {
+      "title": "Akaunti",
+      "new": "Akaunti mpya",
+      "name": "Jina",
+      "email": "Barua pepe ya kazi",
+      "role": "Wadhifa",
+      "zone": "Eneo",
+      "status": "Hali",
+      "actions": "Vitendo",
+      "statuses": { "active": "Inatumika", "locked": "Imefungwa", "inactive": "Imezimwa" },
+      "activate": "Washa",
+      "deactivate": "Zima",
+      "create": "Unda akaunti",
+      "cancel": "Ghairi",
+      "createFailed": "Imeshindwa kuunda akaunti. Angalia taarifa ujaribu tena.",
+      "actionFailed": "Imeshindwa kuhifadhi mabadiliko. Jaribu tena.",
+      "rules": "Kila akaunti ina wadhifa mmoja tu. Mabadiliko huanza wanapoingia tena."
+    }
+  }
+}
+}
+}

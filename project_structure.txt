@@ -5,7 +5,7 @@ NOTE:
 
 
 
- nakuru/
+ Nasafisha_app/
 │
 ├── README.md
 │

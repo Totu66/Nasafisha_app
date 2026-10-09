@@ -1,1 +1,213 @@
-{}
+{
+  "common": { "signOut": "Sign out" },
+  "nav": {
+    "overview": "Overview",
+    "fleetMap": "Fleet map",
+    "tickets": "Tickets",
+    "dumpingSites": "Dumping sites",
+    "efficiencyIndex": "Efficiency Index",
+    "accounts": "Accounts"
+  },
+  "roles": {
+    "executive": "Executive",
+    "operations_manager": "Operations Manager",
+    "county_ict_admin": "County ICT Administrator",
+    "field_supervisor": "Field Supervisor",
+    "field_crew": "Field Crew",
+    "citizen": "Citizen"
+  },
+  "adminLogin": {
+    "title": "Sign in with your county account",
+    "email": "Work email",
+    "password": "Password",
+    "submit": "Sign in",
+    "submitting": "Signing in…",
+    "lockedHelp": "Locked out? Contact the County ICT Administrator.",
+    "errors": {
+      "invalid": "Email or password is wrong.",
+      "locked": "Your account is locked. Contact the County ICT Administrator.",
+      "inactive": "This account is deactivated. Contact the County ICT Administrator.",
+      "generic": "Could not sign in. Check your connection and try again."
+    },
+
+
+
+  "common": {
+    "online": "Online",
+    "offline": "Offline",
+    "loading": "Loading…",
+    "retry": "Try again",
+    "loadError": "Could not load this. Check your connection."
+  },
+  "ticketStatus": {
+    "assigned": "Assigned",
+    "in_progress": "In progress",
+    "closing": "Closing",
+    "resolved": "Resolved",
+    "blocked": "Blocked"
+  },
+  "issueType": {
+    "missed_collection": "Missed collection",
+    "illegal_dumping": "Illegal dumping"
+  },
+  "field": {
+    "nav": { "tickets": "Tickets", "doneToday": "Done today" },
+    "tickets": {
+      "hello": "Hello, {name}",
+      "vehicle": "Vehicle {plate}",
+      "assigned": "Assigned to you ({count})",
+      "empty": "No tickets assigned to you right now."
+    },
+    "detail": {
+      "locating": "Finding your location…",
+      "distance": "{meters} m from the spot",
+      "mapPlaceholder": "Map: you and the spot",
+      "residentNote": "Resident note: \"{note}\"",
+      "beforePhotoAlt": "Resident's photo of the waste",
+      "openMaps": "Open in Maps",
+      "takeAfterPhoto": "Take after-photo",
+      "geo": {
+        "denied": "Location is off. Turn it on to see how far you are from the spot.",
+        "unavailable": "Could not find your location."
+      }
+    },
+    "closure": {
+      "title": "Close ticket",
+      "insideLimit": "{meters} m from the report. Inside the limit.",
+      "mismatchTitle": "Photo is {meters} m from the report",
+      "mismatchBody": "Closing needs the photo within {limit} m. Go back to the spot and retake it, or ask your supervisor to approve.",
+      "before": "Before",
+      "after": "After",
+      "beforeAt": "Before {time}",
+      "afterAt": "After {time}",
+      "noAfterPhoto": "No after-photo yet",
+      "retake": "Retake at the spot",
+      "askSupervisor": "Ask supervisor to approve",
+      "closeTicket": "Close ticket",
+      "approvalSent": "Request sent. Your supervisor will approve or send it back.",
+      "approvalFailed": "Could not send the request. Try again."
+    },
+    "doneToday": {
+      "title": "Done today",
+      "empty": "Nothing closed yet today.",
+      "help": "Kept safely on your phone. They send on their own when signal returns, with the time you took the photo.",
+      "trySending": "Try sending now"
+    }
+  },
+  "offline": {
+    "offlinePrefix": "Offline.",
+    "waiting": "{count} action waiting to send | {count} actions waiting to send",
+    "status": { "pending": "Pending send", "sent": "Sent", "failed": "Failed" }
+  }
+
+
+  {
+  "field": {
+    "nav": {
+      "crews": "Crews",
+      "alerts": "Alerts ({count})",
+      "resetPin": "Reset PIN"
+    }
+  },
+  "supervisor": {
+    "crews": {
+      "title": "Crew status",
+      "crew": "Crew",
+      "vehicle": "Vehicle",
+      "status": "Status",
+      "tickets": "Tickets",
+      "live": {
+        "en_route": "En route",
+        "off_route": "Off route",
+        "stale": "Stale · {minutes} min",
+        "idle": "Idle"
+      }
+    },
+    "needs": {
+      "title": "Needs you ({count})",
+      "none": "Nothing needs you right now.",
+      "deviation": "Deviation alert · {crew}",
+      "closing": "Closing request · {crew}"
+    },
+    "alerts": {
+      "pageTitle": "Route alerts",
+      "title": "{crew} is off route",
+      "body": "{plate} is {meters} m from its route for {minutes} min.",
+      "callCrew": "Call crew",
+      "authorise": "Mark as authorised",
+      "help": "Clears on its own when the truck returns. Threshold is {meters} m for {minutes} min. Every flag is kept in the shift record.",
+      "mapPlaceholder": "Map: planned vs actual",
+      "empty": "No route alerts right now.",
+      "failed": "Could not mark it as authorised. Try again."
+    },
+    "approve": {
+      "title": "Approve closing?",
+      "requestedBy": "Requested by {name} · {crew}",
+      "distance": "{meters} m from the report. Limit is {limit} m.",
+      "recorded": "Your approval is recorded with your name.",
+      "sendBack": "Send back",
+      "approve": "Approve and close",
+      "failed": "Could not save your decision. Try again."
+    },
+    "pin": {
+      "title": "Reset PIN",
+      "locked": "Account locked · 3 wrong PINs at {time}",
+      "lockedChip": "Locked",
+      "newPin": "New PIN",
+      "help": "Tell them in person. It works right away.",
+      "invalid": "PIN must be 4 to 6 digits.",
+      "save": "Save new PIN",
+      "cancel": "Cancel",
+      "saved": "New PIN saved.",
+      "failed": "Could not save the PIN. Try again.",
+      "empty": "No crew accounts to show."
+    }
+  },
+  "admin": {
+    "tickets": {
+      "title": "Tickets",
+      "reference": "Reference",
+      "type": "Type",
+      "zone": "Zone",
+      "crew": "Crew",
+      "status": "Status",
+      "empty": "No tickets match this filter.",
+      "tabs": { "all": "All", "open": "Open", "awaiting": "Awaiting approval", "resolved": "Resolved" }
+    },
+    "ticketDetail": {
+      "back": "Tickets",
+      "distance": "{meters} m from the report",
+      "pending": "Requested by {name}, {crew}. Needs a supervisor's approval before it can close.",
+      "audit": "Audit trail"
+    },
+    "audit": {
+      "submitted": "Report submitted",
+      "verified": "Report verified",
+      "assigned": "Assigned",
+      "closure_blocked": "Closure attempted, blocked",
+      "closure_approved": "Closure approved",
+      "closure_overridden": "Closure overridden",
+      "resolved": "Resolved"
+    },
+    "accounts": {
+      "title": "Accounts",
+      "new": "New account",
+      "name": "Name",
+      "email": "Work email",
+      "role": "Role",
+      "zone": "Zone",
+      "status": "Status",
+      "actions": "Actions",
+      "statuses": { "active": "Active", "locked": "Locked", "inactive": "Inactive" },
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "create": "Create account",
+      "cancel": "Cancel",
+      "createFailed": "Could not create the account. Check the details and try again.",
+      "actionFailed": "Could not save that change. Try again.",
+      "rules": "Each account holds exactly one role. A change takes effect on their next sign-in."
+    }
+  }
+}
+}
+}
