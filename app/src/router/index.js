@@ -1,80 +1,91 @@
 import { createRouter, createWebHistory } from "vue-router";
-import {
-  HomeView,
-  PostsView,
-  DetailsView,
-  ApiTestView,
-  LandingView,
-} from "../views";
-import { useAuthStore } from "../store";
+
+import LoginView from "../views/LoginView.vue";
+import DashboardView from "../views/DashboardView.vue";
+import OperationsView from "../views/OperationsView.vue";
+import FleetView from "../views/FleetView.vue";
+import TicketsView from "../views/TicketsView.vue";
+import DumpingSitesView from "../views/DumpingSitesView.vue";
+import AccountsView from "../views/AccountsView.vue";
 
 const routes = [
-  { path: "/", name: "app", component: LandingView },
-  { path: "/home", name: "home", component: HomeView },
   {
-    path: "/api",
-    name: "api",
-    component: ApiTestView,
+    path: "/",
+    redirect: "/login",
+  },
+
+  {
+    path: "/login",
+    name: "Login",
+    component: LoginView,
+  },
+
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: DashboardView,
     meta: { requiresAuth: true },
   },
+
   {
-    path: "/posts",
-    name: "posts",
-    component: PostsView,
+    path: "/operations",
+    name: "Operations",
+    component: OperationsView,
     meta: { requiresAuth: true },
   },
+
   {
-    path: "/posts/:id",
-    name: "details",
-    component: DetailsView,
-    props: true,
+    path: "/fleet",
+    name: "Fleet",
+    component: FleetView,
+    meta: { requiresAuth: true },
+  },
+
+ { 
+    path: "/tickets",
+    name: "Tickets",
+    component: TicketsView,
+    meta: { requiresAuth: true }
+  },
+  
+  {
+  path: "/dumping-sites",
+  name: "DumpingSites",
+  component: DumpingSitesView,
+  meta: { requiresAuth: true }
+},
+
+{
+    path: "/accounts",
+    name: "Accounts",
+    component: AccountsView,
     meta: { requiresAuth: true },
   },
 ];
 
-/**Initialize here */
-const router = createRouter({ history: createWebHistory(), routes });
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
 
-router.beforeEach(async (to) => {
-  const auth = useAuthStore();
+router.beforeEach((to) => {
+  const isLoggedIn =
+    localStorage.getItem("nasafisha_logged_in") === "true";
 
-  /**If the user is just landing, try to restore session first
-   * This "picks up" the session from the Magic Link URL hash
-   */
-  if (!auth.user) {
-    try {
-      await auth.fetchUser();
-    } catch (err) {
-      console.error("Failed to restore session:", err);
-    }
-  }
-
-  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
-
-  // 2. If route requires auth and we still don't have a user
-  if (requiresAuth && !auth.user) {
+  if (to.meta.requiresAuth && !isLoggedIn) {
     return {
       path: "/login",
-      query: { returnUrl: to.fullPath },
+      query: {
+        returnUrl: to.fullPath,
+      },
     };
   }
 
-  /**If user is logged in and tries to go to login page */
-  if (to.name === "Login" && auth.user) {
+  if (to.name === "Login" && isLoggedIn) {
+    return "/dashboard";
   }
 
-  // // redirect to login page if not logged in and trying to access a restricted page
-  // const publicPages = ["/", "/login"];
-  // const authRequired = !publicPages.includes(to.path);
-  // const auth = useAuthStore();
-
-  // /**add function to check if user is logged in */
-  // if (authRequired && !auth.user) {
-  //   auth.returnUrl = to.fullPath;
-  //   auth.isLoginModalOpen = true;
-  //   return from.fullPath;
-  //   // return "/login";
-  // }
+  return true;
 });
 
 export default router;
