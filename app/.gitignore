@@ -8,10 +8,19 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-package-lock.json
 dist
+.vite
+package-lock.json
 dist-ssr
 *.local
+dev.log
+now.tmp.mjs
+.env
+.env.*
+!.env.example
+coverage
+playwright-report
+**/.DS_Store
 
 # Editor directories and files
 .vscode/*

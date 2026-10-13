@@ -1,146 +1,133 @@
 <script setup lang="ts">
-// FE-006 (FR-013): close a ticket with a mandatory after-photo + automatic GPS.
-//  • Close stays disabled until a photo AND a location exist.
-//  • Outside the closure radius (100 m) the ticket cannot be closed: a "too far" notice is shown.
-//  • No connection: the closure is saved to the offline queue and syncs later (FR-023).
 import { computed, onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
-import AfterPhotoCapture from '../../components/tickets/AfterPhotoCapture.vue'
-import TooFarNotice from '../../components/tickets/TooFarNotice.vue'
-import { useClosureGate } from '../../composables/useClosureGate'
-import { useFieldOpsI18n } from '../../composables/useFieldOpsI18n'
-import {
-  enqueueClosure,
-  errorCode,
-  fetchTicket,
-  homeRouteForRole,
-  sendClosure,
-  type FieldTicket,
-} from '../../composables/fieldAdapters'
-import { formatDistance } from '../../helpers/closure'
+import { useRoute, useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
+import ClosureEvidencePair from '@/components/tickets/ClosureEvidencePair.vue'
+import ClosureMismatchAlert from '@/components/tickets/ClosureMismatchAlert.vue'
+import { requestClosureApproval } from '@/api/tickets.api'
+import { useClosureCheck } from '@/composables/useClosureCheck'
+import type { Coordinates } from '@/helpers/geo'
+import { useTicketsStore } from '@/store/tickets.store'
 
-type Screen = 'loading' | 'form' | 'tooFar' | 'done' | 'blocked' | 'notFound'
+interface AfterPhoto {
+  url: string
+  takenAt: string // ISO
+  coords: Coordinates
+}
 
+const { t } = useI18n()
 const route = useRoute()
-const { t } = useFieldOpsI18n()
-// CHECK: the route param name in router/routes/field.routes.ts (ticketId or id).
-const ticketId = String(route.params.ticketId ?? route.params.id)
+const router = useRouter()
+const store = useTicketsStore()
+const { current: ticket } = storeToRefs(store)
 
-const ticket = ref<FieldTicket | null>(null)
-const screen = ref<Screen>('loading')
-const busy = ref(false)
-const error = ref<string | null>(null)
-const message = ref('')
+// KELVIN (FE-006): his camera component calls onPhotoCaptured(...) when a photo is taken.
+const afterPhoto = ref<AfterPhoto | null>(null)
+function onPhotoCaptured(photo: AfterPhoto) {
+  afterPhoto.value = photo
+}
 
-// Top-level refs so the template unwraps them.
-const { photo, capturedAt, position, gpsState, captureFailed, check, canSubmit, capture, reset, radius } = useClosureGate(ticket)
+// FE-027: location check
+const reportLocation = computed(() => ticket.value?.location ?? null)
+const photoLocation = computed(() => afterPhoto.value?.coords ?? null)
+const { distance, hasPhoto, isWithinRadius, limit } = useClosureCheck(reportLocation, photoLocation)
 
-onMounted(async () => {
+const isRequesting = ref(false)
+const approvalSent = ref(false)
+const requestFailed = ref(false)
+
+const canClose = computed(() => hasPhoto.value && isWithinRadius.value) // AC-013.2: stays disabled otherwise
+
+function formatTime(iso: string): string {
+  return new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+}
+
+function retake() {
+  afterPhoto.value = null
+  approvalSent.value = false
+}
+
+async function askSupervisor() {
+  if (!ticket.value || !afterPhoto.value || distance.value === null) return
+  isRequesting.value = true
+  requestFailed.value = false
   try {
-    ticket.value = await fetchTicket(ticketId)
+    await requestClosureApproval(ticket.value.id, {
+      distanceMeters: distance.value,
+      afterLat: afterPhoto.value.coords.lat,
+      afterLng: afterPhoto.value.coords.lng,
+      capturedAt: afterPhoto.value.takenAt,
+    })
+    approvalSent.value = true
   } catch {
-    ticket.value = null
-  }
-  screen.value = !ticket.value ? 'notFound' : ticket.value.open ? 'form' : 'blocked'
-})
-
-const distanceLabel = computed(() => {
-  const c = check.value
-  return !c.ok && c.code === 'TOO_FAR' ? formatDistance(c.distance) : ''
-})
-
-function retake(): void {
-  reset()
-  error.value = null
-  screen.value = 'form'
-}
-
-function finish(text: string): void {
-  message.value = text
-  screen.value = 'done'
-}
-
-async function submit(): Promise<void> {
-  error.value = null
-  const c = check.value
-  if (!c.ok) {
-    if (c.code === 'TOO_FAR') {
-      screen.value = 'tooFar'
-      return
-    }
-    error.value = c.code === 'NO_PHOTO' ? t('closure.photoRequired') : t('closure.gpsFailed')
-    return
-  }
-  const payload = {
-    ticketId,
-    photo: photo.value as string,
-    // When the PHOTO was taken, not when it syncs (matters for queued closures).
-    capturedAt: capturedAt.value ?? Date.now(),
-    position: position.value as NonNullable<typeof position.value>,
-  }
-  busy.value = true
-  try {
-    await sendClosure(payload)
-    finish(t('closure.success'))
-  } catch (e) {
-    const code = errorCode(e)
-    if (code === 'NETWORK' || !navigator.onLine) {
-      await enqueueClosure(payload)
-      finish(t('closure.queued'))
-    } else if (code === 'CLOSURE_TOO_FAR') {
-      screen.value = 'tooFar'
-    } else if (code === 'ALREADY_CLOSED') {
-      error.value = t('closure.alreadyClosed')
-    } else if (code === 'PHOTO_REQUIRED') {
-      error.value = t('closure.photoRequired')
-    } else if (code === 'LOCATION_REQUIRED') {
-      error.value = t('closure.gpsFailed')
-    } else {
-      error.value = t('closure.error')
-    }
+    requestFailed.value = true
   } finally {
-    busy.value = false
+    isRequesting.value = false
   }
 }
+
+function closeTicket() {
+  // KELVIN (FE-006/BE-012): submit the closure (queue it when offline), then leave the screen.
+  router.push({ name: 'field-tickets' })
+}
+
+onMounted(() => {
+  if (!ticket.value || ticket.value.id !== String(route.params.id)) store.loadOne(String(route.params.id))
+})
 </script>
 
 <template>
-  <section class="mx-auto max-w-xl space-y-4 p-4">
-    <p v-if="screen === 'loading'" class="text-gray-600">{{ t('closure.loading') }}</p>
+  <section v-if="ticket">
+    <h1 class="text-2xl font-bold text-green-900">{{ t('field.closure.title') }}</h1>
 
-    <p v-else-if="screen === 'notFound'" role="alert" class="font-semibold text-red-700">{{ t('closure.notFound') }}</p>
+    <!-- KELVIN: put the camera capture component here and wire @captured="onPhotoCaptured" -->
 
-    <p v-else-if="screen === 'blocked'" class="rounded-lg bg-amber-50 p-3 text-amber-800">{{ t('closure.notOpen') }}</p>
+    <p v-if="hasPhoto && isWithinRadius" class="mt-2 inline-block rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-900">
+      ✓ {{ t('field.closure.insideLimit', { meters: distance }) }}
+    </p>
 
-    <template v-else-if="screen === 'form'">
-      <h1 class="text-xl font-bold">{{ t('closure.title', { id: ticketId }) }}</h1>
-      <p class="text-gray-600">{{ t('closure.intro') }}</p>
-      <AfterPhotoCapture
-        :photo="photo"
-        :gps-state="gpsState"
-        :accuracy="position?.accuracy"
-        :failed="captureFailed"
-        :disabled="busy"
-        @file="capture"
+    <div v-if="hasPhoto && !isWithinRadius && distance !== null" class="mt-3">
+      <ClosureMismatchAlert :distance-meters="distance" :limit-meters="limit" />
+    </div>
+
+    <div class="mt-4">
+      <ClosureEvidencePair
+        :before-url="ticket.beforePhotoUrl"
+        :before-time="formatTime(ticket.reportedAt)"
+        :after-url="afterPhoto?.url ?? null"
+        :after-time="afterPhoto ? formatTime(afterPhoto.takenAt) : null"
       />
-      <p v-if="error" role="alert" class="font-semibold text-red-700">{{ error }}</p>
+    </div>
+
+    <p v-if="approvalSent" role="status" class="mt-3 rounded bg-blue-50 p-2 text-sm text-blue-900">
+      {{ t('field.closure.approvalSent') }}
+    </p>
+    <p v-if="requestFailed" role="alert" class="mt-3 rounded bg-red-50 p-2 text-sm text-red-800">
+      {{ t('field.closure.approvalFailed') }}
+    </p>
+
+    <div class="mt-4 flex flex-wrap gap-2">
+      <button type="button" class="rounded border border-green-800 px-3 py-2 text-sm text-green-800" @click="retake">
+        {{ t('field.closure.retake') }}
+      </button>
+      <button
+        v-if="hasPhoto && !isWithinRadius"
+        type="button"
+        :disabled="isRequesting || approvalSent"
+        class="rounded border border-green-800 px-3 py-2 text-sm text-green-800 disabled:opacity-50"
+        @click="askSupervisor"
+      >
+        {{ t('field.closure.askSupervisor') }}
+      </button>
       <button
         type="button"
-        :disabled="!canSubmit || busy"
-        class="min-h-12 w-full rounded-lg bg-green-700 px-4 font-semibold text-white disabled:opacity-50"
-        @click="submit"
+        :disabled="!canClose"
+        class="rounded bg-green-700 px-3 py-2 text-sm font-medium text-white disabled:opacity-40"
+        @click="closeTicket"
       >
-        {{ busy ? t('closure.submitting') : t('closure.submit') }}
+        {{ t('field.closure.closeTicket') }}
       </button>
-    </template>
-
-    <TooFarNotice v-else-if="screen === 'tooFar'" :distance-label="distanceLabel" :radius="radius" @retake="retake" />
-
-    <template v-else>
-      <h1 class="text-xl font-bold">{{ message }}</h1>
-      <router-link :to="homeRouteForRole('crew')" class="inline-flex min-h-12 items-center rounded-lg bg-green-700 px-4 font-semibold text-white">
-        {{ t('closure.back') }}
-      </router-link>
-    </template>
+    </div>
   </section>
 </template>

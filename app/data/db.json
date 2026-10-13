@@ -1,21 +1,247 @@
 {
-  "jobs": [
-    { "title": "Ux Designer", "id": 1, "details": "lorem" },
-    { "title": "Web Developer", "id": 2, "details": "lorem" },
-    { "title": "Backend Engineer", "id": 1, "details": "lorem" }
+  "reports": [
+    { "id": 1, "title": "Illegal dumping", "location": "Kibera", "status": "In review", "updated": "2 hours ago" },
+    { "id": 2, "title": "Blocked drain", "location": "Mikocheni", "status": "Assigned", "updated": "Today" },
+    { "id": 3, "title": "Overflowing bin", "location": "Kisumu", "status": "Resolved", "updated": "2 days ago" }
+  ],
+  "tickets": [
+    { "id": 1, "name": "Illegal dump cleanup", "zone": "Zone A", "status": "Assigned", "due": "Today" },
+    { "id": 2, "name": "Drain blockage", "zone": "Zone C", "status": "In progress", "due": "Tomorrow" },
+    { "id": 3, "name": "Overflowing bin", "zone": "Zone B", "status": "Pending", "due": "2 days" }
   ],
   "posts": [
     {
       "id": 1,
-      "title": "Welcome to the new blog",
-      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-      "tags": ["webdev", "coding", "news"]
+      "author": "Asha M.",
+      "time": "2 hours ago",
+      "category": "Cleanup",
+      "text": "Community cleanup this Saturday from 8:00am to noon. Please bring gloves and reusable bags.",
+      "likes": 18,
+      "comments": 5,
+      "location": "Kibera"
     },
     {
       "id": 2,
-      "title": "top 5 CSS tips",
-      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-      "tags": ["webdev", "coding", "news"]
+      "author": "Samuel N.",
+      "time": "Yesterday",
+      "category": "Awareness",
+      "text": "We are mapping blocked drains around the main market. Report any flood-prone areas immediately.",
+      "likes": 24,
+      "comments": 3,
+      "location": "Mombasa Road"
+    }
+  ],
+  "pendingItems": [
+    { "id": 1, "name": "Illegal dump cleanup entry", "meta": "Zone A · 8:40 AM", "status": "Queued" },
+    { "id": 2, "name": "Drain inspection note", "meta": "Zone C · 9:10 AM", "status": "Queued" },
+    { "id": 3, "name": "Safety checklist photo", "meta": "Shift 2 · 10:30 AM", "status": "Failed" }
+  ],
+  "events": [
+    { "id": 1, "name": "Riverbank cleanup", "date": "Sat, 9:00 AM", "location": "Kisumu" },
+    { "id": 2, "name": "School waste drive", "date": "Mon, 1:30 PM", "location": "Nairobi" }
+  ],
+  "liveVehicles": [
+    {
+      "id": "v001",
+      "registrationNumber": "KCA-123A",
+      "crewName": "Alpha Team",
+      "zoneId": "zone_north",
+      "zoneName": "North Zone",
+      "status": "en_route",
+      "latitude": -0.2850,
+      "longitude": 36.2675,
+      "speedKmh": 25.5,
+      "lastReportedAt": "2026-10-08T10:15:30Z",
+      "isStale": false,
+      "staleAcknowledgedAt": null,
+      "staleAcknowledgedBy": null,
+      "hasActiveDeviation": false
+    },
+    {
+      "id": "v002",
+      "registrationNumber": "KCA-124B",
+      "crewName": "Bravo Team",
+      "zoneId": "zone_south",
+      "zoneName": "South Zone",
+      "status": "servicing",
+      "latitude": -0.2900,
+      "longitude": 36.2650,
+      "speedKmh": 0,
+      "lastReportedAt": "2026-10-08T10:14:45Z",
+      "isStale": false,
+      "staleAcknowledgedAt": null,
+      "staleAcknowledgedBy": null,
+      "hasActiveDeviation": true
+    },
+    {
+      "id": "v003",
+      "registrationNumber": "KCA-125C",
+      "crewName": "Charlie Team",
+      "zoneId": "zone_east",
+      "zoneName": "East Zone",
+      "status": "en_route",
+      "latitude": -0.2880,
+      "longitude": 36.2720,
+      "speedKmh": 18.3,
+      "lastReportedAt": "2026-10-08T09:55:00Z",
+      "isStale": true,
+      "staleAcknowledgedAt": null,
+      "staleAcknowledgedBy": null,
+      "hasActiveDeviation": false
+    },
+    {
+      "id": "v004",
+      "registrationNumber": "KCA-126D",
+      "crewName": "Delta Team",
+      "zoneId": "zone_west",
+      "zoneName": "West Zone",
+      "status": "idle",
+      "latitude": -0.2820,
+      "longitude": 36.2600,
+      "speedKmh": 0,
+      "lastReportedAt": "2026-10-08T10:16:00Z",
+      "isStale": false,
+      "staleAcknowledgedAt": null,
+      "staleAcknowledgedBy": null,
+      "hasActiveDeviation": false
+    }
+  ],
+  "deviationAlerts": [
+    {
+      "id": "dev001",
+      "vehicleId": "v002",
+      "registrationNumber": "KCA-124B",
+      "zoneId": "zone_south",
+      "status": "active",
+      "raisedAt": "2026-10-08T10:05:15Z",
+      "clearedAt": null,
+      "authorisedAt": null,
+      "authorisedBy": null,
+      "maxDeviationMeters": 650,
+      "durationSeconds": 720,
+      "thresholdMeters": 500,
+      "thresholdMinutes": 10,
+      "location": { "lat": -0.2920, "lng": 36.2640 }
+    },
+    {
+      "id": "dev002",
+      "vehicleId": "v001",
+      "registrationNumber": "KCA-123A",
+      "zoneId": "zone_north",
+      "status": "authorised",
+      "raisedAt": "2026-10-08T09:30:00Z",
+      "clearedAt": null,
+      "authorisedAt": "2026-10-08T09:45:00Z",
+      "authorisedBy": "user_supervisor_001",
+      "maxDeviationMeters": 480,
+      "durationSeconds": 900,
+      "thresholdMeters": 500,
+      "thresholdMinutes": 10,
+      "location": { "lat": -0.2840, "lng": 36.2680 }
+    }
+  ],
+  "plannedRoutes": [
+    {
+      "id": "route001",
+      "name": "North Zone - Monday A",
+      "zoneId": "zone_north",
+      "vehicleId": "v001",
+      "path": [
+        { "lat": -0.2850, "lng": 36.2675 },
+        { "lat": -0.2830, "lng": 36.2700 },
+        { "lat": -0.2860, "lng": 36.2730 },
+        { "lat": -0.2890, "lng": 36.2680 }
+      ],
+      "plannedDistanceMeters": 4200,
+      "plannedDurationSeconds": 1800
+    },
+    {
+      "id": "route002",
+      "name": "South Zone - Monday B",
+      "zoneId": "zone_south",
+      "vehicleId": "v002",
+      "path": [
+        { "lat": -0.2900, "lng": 36.2650 },
+        { "lat": -0.2920, "lng": 36.2620 },
+        { "lat": -0.2940, "lng": 36.2680 }
+      ],
+      "plannedDistanceMeters": 3800,
+      "plannedDurationSeconds": 1500
+    }
+  ],
+  "routeAudits": [
+    {
+      "id": "audit001",
+      "vehicleId": "v001",
+      "registrationNumber": "KCA-123A",
+      "zoneId": "zone_north",
+      "zoneName": "North Zone",
+      "shiftId": "shift_v001_20261007",
+      "shiftEnd": "2026-10-07T18:00:00Z",
+      "plannedRoute": {
+        "id": "route001",
+        "name": "North Zone - Sunday A",
+        "zoneId": "zone_north",
+        "vehicleId": "v001",
+        "path": [
+          { "lat": -0.2850, "lng": 36.2675 },
+          { "lat": -0.2830, "lng": 36.2700 },
+          { "lat": -0.2860, "lng": 36.2730 },
+          { "lat": -0.2890, "lng": 36.2680 }
+        ],
+        "plannedDistanceMeters": 4200,
+        "plannedDurationSeconds": 1800
+      },
+      "actualPath": [
+        { "lat": -0.2850, "lng": 36.2675 },
+        { "lat": -0.2829, "lng": 36.2698 },
+        { "lat": -0.2862, "lng": 36.2728 },
+        { "lat": -0.2891, "lng": 36.2682 }
+      ],
+      "plannedDistanceMeters": 4200,
+      "actualDistanceMeters": 4180,
+      "distanceVarianceMeters": -20,
+      "plannedDurationSeconds": 1800,
+      "actualDurationSeconds": 1750,
+      "durationVarianceSeconds": -50
+    }
+  ],
+  "positionHistory": [
+    {
+      "vehicleId": "v001",
+      "shiftId": "shift_v001_20261008",
+      "shiftStart": "2026-10-08T08:00:00Z",
+      "shiftEnd": "2026-10-08T16:00:00Z",
+      "entries": [
+        {
+          "vehicleId": "v001",
+          "latitude": -0.2850,
+          "longitude": 36.2675,
+          "speedKmh": 0,
+          "timestamp": "2026-10-08T08:00:00Z"
+        },
+        {
+          "vehicleId": "v001",
+          "latitude": -0.2845,
+          "longitude": 36.2680,
+          "speedKmh": 15.0,
+          "timestamp": "2026-10-08T08:05:00Z"
+        },
+        {
+          "vehicleId": "v001",
+          "latitude": -0.2840,
+          "longitude": 36.2690,
+          "speedKmh": 22.5,
+          "timestamp": "2026-10-08T08:10:00Z"
+        },
+        {
+          "vehicleId": "v001",
+          "latitude": -0.2850,
+          "longitude": 36.2675,
+          "speedKmh": 25.5,
+          "timestamp": "2026-10-08T10:15:30Z"
+        }
+      ]
     }
   ]
 }

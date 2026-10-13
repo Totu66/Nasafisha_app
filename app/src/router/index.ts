@@ -1,91 +1,29 @@
-import { createRouter, createWebHistory } from 'vue-router'
-
-import LoginView from '../views/LoginView.vue'
-import CommandCenterView from '../views/admin/CommandCenterView.vue'
-import OperationsView from '../views/OperationsView.vue'
-import FleetView from '../views/FleetView.vue'
-import TicketsView from '../views/TicketsView.vue'
-import DumpingSitesView from '../views/admin/DumpingSitesView.vue'
-import AccountsView from '../views/AccountsView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import adminRoutes from './routes/admin.routes';
+import citizenRoutes from './routes/citizen.routes';
+import fieldRoutes from './routes/field.routes';
+import contractorRoutes from './routes/contractor.routes';
+import NotFoundView from '../views/auth/NotFound.vue';
 
 const routes = [
+  ...adminRoutes,
+  ...citizenRoutes,
+  ...fieldRoutes,
+  ...contractorRoutes,
   {
     path: '/',
-    redirect: '/login'
+    redirect: '/citizen/reports',
   },
-
   {
-    path: '/login',
-    name: 'Login',
-    component: LoginView
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFoundView,
   },
-
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: CommandCenterView,
-    meta: { requiresAuth: true }
-  },
-
-  {
-    path: '/operations',
-    name: 'Operations',
-    component: OperationsView,
-    meta: { requiresAuth: true }
-  },
-
-  {
-    path: '/fleet',
-    name: 'Fleet',
-    component: FleetView,
-    meta: { requiresAuth: true }
-  },
-
-  {
-    path: '/tickets',
-    name: 'Tickets',
-    component: TicketsView,
-    meta: { requiresAuth: true }
-  },
-
-  {
-    path: '/dumping-sites',
-    name: 'DumpingSites',
-    component: DumpingSitesView,
-    meta: { requiresAuth: true }
-  },
-
-  {
-    path: '/accounts',
-    name: 'Accounts',
-    component: AccountsView,
-    meta: { requiresAuth: true }
-  }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  routes,
+});
 
-router.beforeEach((to) => {
-  const isLoggedIn =
-    localStorage.getItem('nasafisha_logged_in') === 'true'
-
-  if (to.meta.requiresAuth && !isLoggedIn) {
-    return {
-      path: '/login',
-      query: {
-        returnUrl: to.fullPath
-      }
-    }
-  }
-
-  if (to.name === 'Login' && isLoggedIn) {
-    return '/dashboard'
-  }
-
-  return true
-})
-
-export default router
+export default router;
