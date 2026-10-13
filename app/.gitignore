@@ -8,12 +8,13 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-.dist
+dist
 .vite
 package-lock.json
-dist
 dist-ssr
 *.local
+dev.log
+now.tmp.mjs
 .env
 .env.*
 !.env.example

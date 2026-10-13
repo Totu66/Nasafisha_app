@@ -88,6 +88,11 @@ const adminRoutes: RouteRecordRaw[] = [
         component: () => import('@/views/admin/UsersRolesView.vue'),
         meta: { permission: PERMISSIONS.ACCOUNTS_MANAGE },
       },
+      {
+        path: 'audit-logs',
+        name: 'admin-audit-logs',
+        component: () => import('@/views/admin/AuditLogsView.vue'),
+      },
     ],
   },
 ]
