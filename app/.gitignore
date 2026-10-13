@@ -1,6 +1,8 @@
 node_modules
-.dist
+dist
 .vite
+dev.log
+now.tmp.mjs
 .env
 coverage
 playwright-report
