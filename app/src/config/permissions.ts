@@ -1,50 +1,99 @@
-import { ROLES, type Role } from './roles'
+/**
+ * Permission catalogue and role-to-permission mapping (FE-033).
+ * Used by usePermission() in components and by tests/unit/admin-rbac.spec.ts.
+ */
 
-// Pages and navigation check permissions, never role names.
-// To change what a role can do, edit ROLE_PERMISSIONS only.
-export const PERMISSIONS = {
-  DASHBOARD_EXECUTIVE: 'dashboard:executive', // municipality summary only (AC-030.1)
-  DASHBOARD_OPERATIONS: 'dashboard:operations', // zone drill-down
-  FLEET_VIEW: 'fleet:view',
-  TICKETS_VIEW: 'tickets:view',
-  DUMPING_VIEW: 'dumping:view',
-  EFFICIENCY_VIEW: 'efficiency:view',
-  ACCOUNTS_MANAGE: 'accounts:manage',
-   // ICT Administrator only (FR-003)
-    // Add inside PERMISSIONS:
-  CREW_STATUS_VIEW: 'crew:status:view',
-  DEVIATION_AUTHORISE: 'deviation:authorise', // FR-022
-  CLOSURE_APPROVE: 'closure:approve', // BR-013.2
-  CREW_PIN_RESET: 'crew:pin:reset', // BR-002.2
-} as const
+import type { UserRole } from '../types/user';
 
-export type Permission = (typeof PERMISSIONS)[keyof typeof PERMISSIONS]
+export const PERMISSIONS = [
+  // Reports & tickets
+  'report:create',
+  'report:view:own',
+  'report:view:all',
+  'report:assign',
+  'report:resolve',
+  // Fleet & routes
+  'fleet:view',
+  'fleet:track',
+  'route:audit',
+  // Finance
+  'finance:view',
+  'finance:collect',
+  'finance:refund',
+  // Workforce
+  'workforce:view',
+  'workforce:manage',
+  // Administration
+  'user:manage',
+  'role:manage',
+  'audit:view',
+  'config:manage',
+  // Contractor ledger
+  'contractor:view:own',
+  'contractor:view:all',
+  'contractor:attest',
+  // Community
+  'community:post',
+  'community:moderate',
+  // Offline sync
+  'sync:push',
+] as const;
 
-export const ROLE_PERMISSIONS: Record<Role, readonly Permission[]> = {
-  [ROLES.CITIZEN]: [],
-  [ROLES.FIELD_CREW]: [],
-  [ROLES.FIELD_SUPERVISOR]: [],
-  [ROLES.EXECUTIVE]: [PERMISSIONS.DASHBOARD_EXECUTIVE, PERMISSIONS.EFFICIENCY_VIEW],
-  [ROLES.OPERATIONS_MANAGER]: [
-    PERMISSIONS.DASHBOARD_OPERATIONS,
-    PERMISSIONS.FLEET_VIEW,
-    PERMISSIONS.TICKETS_VIEW,
-    PERMISSIONS.DUMPING_VIEW,
-    PERMISSIONS.EFFICIENCY_VIEW,
-  ],
- 
+export type Permission = (typeof PERMISSIONS)[number];
 
-// Replace the field_supervisor line in ROLE_PERMISSIONS with:
-  [ROLES.FIELD_SUPERVISOR]: [
-    PERMISSIONS.CREW_STATUS_VIEW,
-    PERMISSIONS.DEVIATION_AUTHORISE,
-    PERMISSIONS.CLOSURE_APPROVE,
-    PERMISSIONS.CREW_PIN_RESET,
-  ],
+/** Every permission, for admin and for "grant all" assertions in tests. */
+export const ALL_PERMISSIONS: Permission[] = [...PERMISSIONS];
 
-  [ROLES.COUNTY_ICT_ADMIN]: [PERMISSIONS.ACCOUNTS_MANAGE],
+const ADMIN_PERMISSIONS = ALL_PERMISSIONS;
+
+const CITIZEN_PERMISSIONS: Permission[] = [
+  'report:create',
+  'report:view:own',
+  'finance:collect',
+  'community:post',
+  'sync:push',
+];
+
+const FIELD_PERMISSIONS: Permission[] = [
+  'report:view:all',
+  'report:assign',
+  'report:resolve',
+  'fleet:view',
+  'workforce:view',
+  'community:post',
+  'sync:push',
+];
+
+const CONTRACTOR_PERMISSIONS: Permission[] = [
+  'report:view:all',
+  'report:resolve',
+  'fleet:view',
+  'fleet:track',
+  'route:audit',
+  'workforce:view',
+  'contractor:view:own',
+  'contractor:attest',
+  'sync:push',
+];
+
+export const ROLE_PERMISSIONS: Record<UserRole, Permission[]> = {
+  admin: ADMIN_PERMISSIONS,
+  citizen: CITIZEN_PERMISSIONS,
+  field: FIELD_PERMISSIONS,
+  contractor: CONTRACTOR_PERMISSIONS,
+};
+
+export function permissionsForRole(role: UserRole | null | undefined): Permission[] {
+  return role ? [...(ROLE_PERMISSIONS[role] ?? [])] : [];
 }
 
-export function roleHasPermission(role: Role, permission: Permission): boolean {
-  return ROLE_PERMISSIONS[role].includes(permission)
+export function roleHasPermission(role: UserRole | null | undefined, permission: Permission): boolean {
+  if (!role) return false;
+  return (ROLE_PERMISSIONS[role] ?? []).includes(permission);
 }
+
+export function isPermission(value: unknown): value is Permission {
+  return typeof value === 'string' && (PERMISSIONS as readonly string[]).includes(value);
+}
+
+export default ROLE_PERMISSIONS;

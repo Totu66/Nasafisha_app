@@ -1,100 +1,49 @@
-import type { RouteRecordRaw } from 'vue-router'
-import AdminLayout from '@/layouts/AdminLayout.vue'
-import AuthLayout from '@/layouts/AuthLayout.vue'
-import { ADMIN_HOME_PATH, ADMIN_ROLES } from '@/config/roles'
-import { PERMISSIONS } from '@/config/permissions'
-import { useAuthStore } from '@/store/auth.store'
+import type { RouteRecordRaw } from 'vue-router';
+import AdminLayout from '../../layouts/AdminLayout.vue';
+import CommandCenterView from '../../views/admin/CommandCenterView.vue';
+import TicketsView from '../../views/admin/TicketsView.vue';
+import FleetMapView from '../../views/admin/FleetMapView.vue';
+import AuditLogsView from '../../views/admin/AuditLogsView.vue';
 
-const adminRoutes: RouteRecordRaw[] = [
-  {
-    path: '/admin/sign-in',
-    component: AuthLayout,
-    meta: { public: true },
-    children: [
-      {
-        path: '',
-        name: 'admin-login',
-        component: () => import('@/views/auth/AdminLogin.vue'),
-      },
-    ],
-  },
+/**
+ * County control centre (FE-031/033).
+ * Parent record carries the RBAC meta consumed by router/guards.ts.
+ */
+export const adminRoutes: RouteRecordRaw[] = [
   {
     path: '/admin',
     component: AdminLayout,
-    meta: { requiresAuth: true, roles: ADMIN_ROLES },
+    meta: {
+      requiresAuth: true,
+      roles: ['admin'],
+    },
     children: [
       {
-        // /admin sends each role to its own home page.
         path: '',
-        name: 'admin-home',
-        redirect: () => {
-          const auth = useAuthStore()
-          return (auth.role && ADMIN_HOME_PATH[auth.role]) || '/admin/sign-in'
-        },
+        name: 'AdminDashboard',
+        component: CommandCenterView,
+        meta: { title: 'Command Center' },
       },
       {
-        path: 'executive',
-        name: 'admin-executive',
-        component: () => import('@/views/admin/CommandCenterView.vue'),
-        props: { mode: 'executive' },
-        meta: { permission: PERMISSIONS.DASHBOARD_EXECUTIVE },
+        path: 'tickets',
+        name: 'AdminTickets',
+        component: TicketsView,
+        meta: { title: 'Ticket Dispatch' },
       },
       {
-        path: 'ops',
-        name: 'admin-ops',
-        component: () => import('@/views/admin/CommandCenterView.vue'),
-        props: { mode: 'operations' },
-        meta: { permission: PERMISSIONS.DASHBOARD_OPERATIONS },
-      },
-      {
-        path: 'ops/fleet',
-        name: 'admin-fleet',
-        component: () => import('@/views/admin/FleetMapView.vue'),
-        meta: { permission: PERMISSIONS.FLEET_VIEW },
-      },
-      {
-        path: 'ops/fleet/:vehicleId/audit',
-        name: 'admin-route-audit',
-        component: () => import('@/views/admin/RouteAuditView.vue'),
-        meta: { permission: PERMISSIONS.FLEET_VIEW },
-      },
-      {
-        path: 'ops/tickets',
-        name: 'admin-tickets',
-        component: () => import('@/views/admin/TicketsView.vue'),
-        meta: { permission: PERMISSIONS.TICKETS_VIEW },
-      },
-     {
-        path: 'ops/tickets/:id',
-        name: 'admin-ticket-detail',
-        component: () => import('@/views/admin/AdminTicketDetailView.vue'),
-        meta: { permission: PERMISSIONS.TICKETS_VIEW },
-      },
-      {
-        path: 'ops/dumping-sites',
-        name: 'admin-dumping-sites',
-        component: () => import('@/views/admin/DumpingSitesView.vue'),
-        meta: { permission: PERMISSIONS.DUMPING_VIEW },
-      },
-      {
-        path: 'efficiency-index',
-        name: 'admin-efficiency-index',
-        component: () => import('@/views/admin/EfficiencyIndexView.vue'),
-        meta: { permission: PERMISSIONS.EFFICIENCY_VIEW },
-      },
-      {
-        path: 'accounts',
-        name: 'admin-accounts',
-        component: () => import('@/views/admin/UsersRolesView.vue'),
-        meta: { permission: PERMISSIONS.ACCOUNTS_MANAGE },
+        path: 'fleet',
+        name: 'AdminFleet',
+        component: FleetMapView,
+        meta: { title: 'Fleet & Routes' },
       },
       {
         path: 'audit-logs',
-        name: 'admin-audit-logs',
-        component: () => import('@/views/admin/AuditLogsView.vue'),
+        name: 'AdminAuditLogs',
+        component: AuditLogsView,
+        meta: { title: 'Audit Logs' },
       },
     ],
   },
-]
+];
 
-export default adminRoutes
+export default adminRoutes;

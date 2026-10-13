@@ -1,36 +1,56 @@
-import type { RouteRecordRaw } from 'vue-router'
-import FieldLayout from '@/layouts/FieldLayout.vue'
-import { ROLES } from '@/config/roles'
+import type { RouteRecordRaw } from 'vue-router';
+import FieldLayout from '../../layouts/FieldLayout.vue';
+import FieldLogin from '../../views/auth/FieldLogin.vue';
+import MyTicketsView from '../../views/field/MyTicketsView.vue';
+import PendingSyncView from '../../views/field/PendingSyncView.vue';
+import SafetyAlertView from '../../views/field/SafetyAlertView.vue';
 
-const fieldRoutes: RouteRecordRaw[] = [
+/**
+ * Field crew portal (FR-002 … FR-007), wrapped in FieldLayout (FE-031).
+ * Parent record carries the RBAC meta consumed by router/guards.ts.
+ */
+export const fieldRoutes: RouteRecordRaw[] = [
+  {
+    path: '/field/login',
+    name: 'FieldLogin',
+    component: FieldLogin,
+    meta: {
+      guestOnly: true,
+      title: 'Field Crew Sign-In',
+    },
+  },
   {
     path: '/field',
     component: FieldLayout,
-    meta: { requiresAuth: true, roles: [ROLES.FIELD_CREW, ROLES.FIELD_SUPERVISOR] },
+    meta: {
+      requiresAuth: true,
+      roles: ['field', 'admin'],
+    },
     children: [
-      { path: '', redirect: { name: 'field-tickets' } },
+      {
+        path: '',
+        redirect: '/field/tickets',
+      },
       {
         path: 'tickets',
-        name: 'field-tickets',
-        component: () => import('@/views/field/MyTicketsView.vue'),
+        name: 'FieldTickets',
+        component: MyTicketsView,
+        meta: { title: 'My Tickets' },
       },
       {
-        path: 'tickets/:id',
-        name: 'field-ticket-detail',
-        component: () => import('@/views/field/TicketDetailView.vue'),
+        path: 'sync',
+        name: 'FieldSync',
+        component: PendingSyncView,
+        meta: { title: 'Pending Sync' },
       },
       {
-        path: 'tickets/:id/close',
-        name: 'field-close-ticket',
-        component: () => import('@/views/field/CloseTicketView.vue'),
-      },
-      {
-        path: 'done-today',
-        name: 'field-done-today',
-        component: () => import('@/views/field/PendingSyncView.vue'),
+        path: 'safety',
+        name: 'FieldSafety',
+        component: SafetyAlertView,
+        meta: { title: 'Safety Alerts' },
       },
     ],
   },
-]
+];
 
-export default fieldRoutes
+export default fieldRoutes;
