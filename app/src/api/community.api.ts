@@ -1,1 +1,1 @@
-export const communityApi = {};
+export {};

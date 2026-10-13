@@ -1,1 +1,1 @@
-export interface EfficiencyIndex {}
+export {};

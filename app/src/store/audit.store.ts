@@ -1,1 +1,1 @@
-export const auditStore = {};
+export {};

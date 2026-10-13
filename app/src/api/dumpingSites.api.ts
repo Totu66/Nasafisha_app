@@ -1,1 +1,1 @@
-export const dumpingSitesApi = {};
+export {};

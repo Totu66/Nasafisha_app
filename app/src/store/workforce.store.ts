@@ -1,1 +1,1 @@
-export const workforceStore = {};
+export {};

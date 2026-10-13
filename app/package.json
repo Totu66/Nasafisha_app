@@ -1,5 +1,5 @@
 {
-  "name": "nasafisha-app",
+  "name": "app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -32,6 +32,7 @@
     "@vitejs/plugin-vue": "^6.0.6",
     "eslint": "^9.16.1",
     "eslint-plugin-vue": "^9.0.0",
+    "jsdom": "^26.1.0",
     "prettier": "^3.3.1",
     "typescript": "^5.7.2",
     "vite": "^8.0.12",

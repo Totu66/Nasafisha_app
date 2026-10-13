@@ -1,1 +1,1 @@
-export const offlineStore = {};
+export {};

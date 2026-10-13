@@ -1,1 +1,1 @@
-export interface Hotspot {}
+export {};

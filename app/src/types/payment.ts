@@ -1,1 +1,1 @@
-export interface Payment {}
+export {};

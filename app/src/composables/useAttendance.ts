@@ -1,1 +1,1 @@
-export function useAttendance() { return {}; }
+export {};

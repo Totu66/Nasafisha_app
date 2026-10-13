@@ -1,1 +1,1 @@
-export const contractorsStore = {};
+export {};

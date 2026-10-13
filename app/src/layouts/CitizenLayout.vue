@@ -1,1 +1,3 @@
-<template><div class="min-h-screen bg-slate-100"><h2 class="p-4 text-lg font-semibold">CitizenLayout</h2><slot /></div></template><script setup lang="ts"></script>
+<template>
+  <main><router-view /></main>
+</template>

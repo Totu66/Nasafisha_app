@@ -43,7 +43,7 @@
         <button type="submit" class="rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-500">Submit report</button>
       </div>
     </form>
-  </section>
+    </section>
 </template>
 
 <script setup lang="ts">

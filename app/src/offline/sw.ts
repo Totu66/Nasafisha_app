@@ -1,1 +1,1 @@
-export const sw = {};
+export {};

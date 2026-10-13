@@ -1,1 +1,1 @@
-export const contractorsApi = {};
+export {};

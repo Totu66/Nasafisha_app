@@ -1,1 +1,1 @@
-export function usePayment() { return {}; }
+export {};

@@ -1,1 +1,1 @@
-export interface Zone {}
+export {};

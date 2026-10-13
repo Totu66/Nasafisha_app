@@ -1,1 +1,1 @@
-export interface DumpingSite {}
+export {};

@@ -1,2 +1,3 @@
-<template><main class="p-6"><h1 class="text-xl font-semibold text-slate-800">DumpingSitesView</h1></main></template>
-<script setup lang="ts"></script>
+<template>
+  <main>Dumping Sites</main>
+</template>

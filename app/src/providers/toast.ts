@@ -1,1 +1,1 @@
-export const toast = {};
+export {};
