@@ -1,1 +1,1 @@
-export const spatialApi = {};
+export {};

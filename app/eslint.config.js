@@ -14,6 +14,10 @@ export default tseslint.config(
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
+      parser: vueParser,
+      parserOptions: {
+        parser: tsParser,
+      },
       globals: {
         window: 'readonly',
         document: 'readonly',

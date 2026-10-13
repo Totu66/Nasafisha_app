@@ -1,1 +1,1 @@
-export function useNotifications() { return {}; }
+export {};

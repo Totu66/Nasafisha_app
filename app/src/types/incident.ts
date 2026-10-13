@@ -1,1 +1,1 @@
-export interface Incident {}
+export {};

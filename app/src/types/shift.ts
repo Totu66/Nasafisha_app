@@ -1,1 +1,1 @@
-export interface Shift {}
+export {};

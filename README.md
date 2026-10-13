@@ -77,5 +77,5 @@ json-server --watch data/db.json
 ## Notes
 
 - The frontend app root is `app/`.
-- Environment variables should be kept in `app/.env` and copied from `app/.env.example`.
+- Copy `app/.env.example` to `app/.env` for local configuration; `.env` files are ignored by Git.
 - Built-in config and tooling are already in place for Vite, Vue, Tailwind, ESLint, Vitest, and Playwright.

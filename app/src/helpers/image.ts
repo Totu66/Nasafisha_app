@@ -1,1 +1,1 @@
-export const imageHelpers = {};
+export {};

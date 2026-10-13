@@ -1,1 +1,1 @@
-export interface Attendance {}
+export {};

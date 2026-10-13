@@ -1,1 +1,1 @@
-export const auditApi = {};
+export {};

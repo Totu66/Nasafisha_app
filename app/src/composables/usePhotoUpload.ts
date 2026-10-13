@@ -1,1 +1,1 @@
-export function usePhotoUpload() { return {}; }
+export {};

@@ -1,1 +1,1 @@
-export const spatialStore = {};
+export {};
