@@ -1,1 +1,167 @@
-{"app":"Nasafisha"}
+{
+  "app": "Nasafisha",
+  "fleet": {
+    "vehicle": {
+      "registration": "Registration",
+      "zone": "Zone",
+      "status": "Status",
+      "speed": "Speed",
+      "lastReported": "Last Reported",
+      "ago": "{time} ago",
+      "justNow": "Just now",
+      "stale": "Stale",
+      "staleTooltip": "No position report for 15 minutes",
+      "dark": "Dark",
+      "darkTooltip": "No position report for 30 minutes",
+      "deviating": "Deviating",
+      "deviatingTooltip": "Active route deviation alert",
+      "acknowledgeLong": "Acknowledge Stale",
+      "acknowledge": "Acknowledge",
+      "acknowledged": "Acknowledged at {time}"
+    },
+    "history": {
+      "title": "Position History",
+      "shiftStart": "Shift Start",
+      "shiftEnd": "Shift End",
+      "pointCount": "Points Recorded",
+      "table": {
+        "time": "Time",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "speed": "Speed"
+      },
+      "noHistory": "No position history available",
+      "error": "Failed to load position history",
+      "loadingMessage": "Loading position history...",
+      "focusPoint": "Show on map"
+    },
+    "audit": {
+      "title": "Route Comparison",
+      "planned": "Planned",
+      "actual": "Actual",
+      "variance": "Variance",
+      "distance": "Distance",
+      "duration": "Duration",
+      "longer": "{value} km longer",
+      "shorter": "{value} km shorter",
+      "late": "{value} min late",
+      "early": "{value} min early",
+      "noAudit": "No route audit available",
+      "loadingMessage": "Loading route audit...",
+      "formatKm": "{km} km",
+      "formatDuration": "{hours}h {minutes}m"
+    },
+    "auditView": {
+      "title": "Route audit",
+      "subtitle": "Compare planned routes against real execution across vehicles and zones.",
+      "filters": {
+        "vehicle": "Vehicle",
+        "zone": "Zone",
+        "dateFrom": "From",
+        "dateTo": "To",
+        "allVehicles": "All vehicles",
+        "allZones": "All zones",
+        "reset": "Reset filters"
+      },
+      "summary": {
+        "title": "Per-zone summary",
+        "zone": "Zone",
+        "average": "Average variance",
+        "worst": "Worst variance"
+      },
+      "detail": {
+        "title": "Route comparison",
+        "distance": "Distance",
+        "duration": "Time",
+        "planned": "Planned",
+        "actual": "Actual",
+        "variance": "Variance",
+        "mapNotice": "Google Maps is unavailable. The route trace is still available below."
+      },
+      "table": {
+        "distanceVariance": "Distance variance",
+        "timeVariance": "Time variance",
+        "shiftEnd": "Shift end",
+        "vehicle": "Vehicle",
+        "zone": "Zone",
+        "page": "Page {page} of {total}",
+        "prev": "Previous",
+        "next": "Next"
+      },
+      "status": {
+        "pending": "Pending",
+        "pass": "Pass",
+        "warning": "Warning",
+        "deviation": "Deviation"
+      },
+      "map": "Route map",
+      "selected": "Selected audit",
+      "loading": "Loading route audits...",
+      "error": "Failed to load route audits.",
+      "retry": "Retry",
+      "empty": "No audits for this filter"
+    },
+    "deviation": {
+      "title": "Deviation Alert",
+      "vehicle": "Vehicle",
+      "zone": "Zone",
+      "status": "Status",
+      "active": "Active",
+      "cleared": "Cleared",
+      "authorised": "Authorised",
+      "raisedAt": "Raised",
+      "duration": "Duration",
+      "maxDeviation": "Max Deviation",
+      "threshold": "Threshold",
+      "authorisedBy": "Authorised By",
+      "authoriseButton": "Authorize",
+      "viewTrail": "View Audit Trail",
+      "durationFormat": "{duration}m",
+      "deviationFormat": "{meters}m / {threshold}m"
+    },
+    "map": {
+      "loading": "Loading map...",
+      "mapsUnavailable": "Maps service unavailable",
+      "fallbackMessage": "Google Maps could not be loaded. Viewing vehicle list instead.",
+      "lastUpdated": "Last updated {time}s ago",
+      "dataUnavailable": "Vehicle data currently unavailable",
+      "tryAgainSoon": "Real-time data will resume shortly.",
+      "staleVehicles": "{count} vehicle stale",
+      "staleVehicles_plural": "{count} vehicles stale",
+      "darkVehicles": "{count} vehicle dark (no signal)",
+      "darkVehicles_plural": "{count} vehicles dark (no signal)",
+      "marker": {
+        "enRoute": "En Route",
+        "servicing": "Servicing",
+        "idle": "Idle",
+        "stale": "Stale - no report for 15 min",
+        "dark": "Dark - no report for 30 min",
+        "deviating": "Deviating from planned route",
+        "speed": "{speed} km/h"
+      },
+      "legend": {
+        "title": "Legend",
+        "enRoute": "En Route",
+        "servicing": "Servicing",
+        "idle": "Idle",
+        "stale": "Stale (no signal)",
+        "deviating": "Route Deviation",
+        "plannedRoute": "Planned Route",
+        "actualRoute": "Actual Route"
+      },
+      "fallbackList": {
+        "title": "Vehicles",
+        "registrationNumber": "Registration",
+        "zone": "Zone",
+        "status": "Status",
+        "speed": "Speed",
+        "lastSeen": "Last Seen",
+        "flags": "Alerts",
+        "noVehicles": "No vehicles available",
+        "select": "Select",
+        "staleFlag": "Stale",
+        "deviationFlag": "Deviation"
+      }
+    }
+  }
+}

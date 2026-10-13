@@ -1,1 +1,167 @@
-{"app":"Nasafisha"}
+{
+  "app": "Nasafisha",
+  "fleet": {
+    "vehicle": {
+      "registration": "Usajili",
+      "zone": "Eneo",
+      "status": "Hali",
+      "speed": "Kasi",
+      "lastReported": "Iliyoripotiwa Mwisho",
+      "ago": "{time} iliyopita",
+      "justNow": "Sasa tu",
+      "stale": "Limesimama",
+      "staleTooltip": "Hakuna ripoti ya nafasi kwa dakika 15",
+      "dark": "Cheusi",
+      "darkTooltip": "Hakuna ripoti ya nafasi kwa dakika 30",
+      "deviating": "Ipeleka",
+      "deviatingTooltip": "Onyo la mchepuko wa njia unaofanya kazi",
+      "acknowledgeLong": "Kubali Limesimama",
+      "acknowledge": "Kubali",
+      "acknowledged": "Ilibali saa {time}"
+    },
+    "history": {
+      "title": "Historia ya Nafasi",
+      "shiftStart": "Kazi Ilianza",
+      "shiftEnd": "Kazi Iliishia",
+      "pointCount": "Pointi Zilirekodiwa",
+      "table": {
+        "time": "Wakati",
+        "latitude": "Latitudo",
+        "longitude": "Longitudo",
+        "speed": "Kasi"
+      },
+      "noHistory": "Hakuna historia ya nafasi inayopatikana",
+      "error": "Imeshindwa kupakia historia ya nafasi",
+      "loadingMessage": "Inapakia historia ya nafasi...",
+      "focusPoint": "Onyesha kwenye ramani"
+    },
+    "audit": {
+      "title": "Kulinganisha Njia",
+      "planned": "Iliyopangwa",
+      "actual": "Halisi",
+      "variance": "Tofauti",
+      "distance": "Umbali",
+      "duration": "Muda",
+      "longer": "{value} km zaidi",
+      "shorter": "{value} km kidogo",
+      "late": "{value} min kuchelewa",
+      "early": "{value} min mapema",
+      "noAudit": "Hakuna huduma ya njia inayopatikana",
+      "loadingMessage": "Inapakia huduma ya njia...",
+      "formatKm": "{km} km",
+      "formatDuration": "{hours}h {minutes}m"
+    },
+    "auditView": {
+      "title": "Ukaguzi wa njia",
+      "subtitle": "Linganisha njia zilizopangwa dhidi ya utekelezaji halisi kwa magari na maeneo.",
+      "filters": {
+        "vehicle": "Gari",
+        "zone": "Eneo",
+        "dateFrom": "Tangu",
+        "dateTo": "Hadi",
+        "allVehicles": "Magari yote",
+        "allZones": "Maeneo yote",
+        "reset": "Weka upya vichujio"
+      },
+      "summary": {
+        "title": "Muhtasari wa eneo",
+        "zone": "Eneo",
+        "average": "Kiwango cha wastani",
+        "worst": "Kiwango kibaya zaidi"
+      },
+      "detail": {
+        "title": "Kulinganisha njia",
+        "distance": "Umbali",
+        "duration": "Muda",
+        "planned": "Iliyopangwa",
+        "actual": "Halisi",
+        "variance": "Tofauti",
+        "mapNotice": "Google Maps haipatikani. Njia ya ruta bado inapatikana hapa chini."
+      },
+      "table": {
+        "distanceVariance": "Tofauti ya umbali",
+        "timeVariance": "Tofauti ya muda",
+        "shiftEnd": "Mwisho wa zamu",
+        "vehicle": "Gari",
+        "zone": "Eneo",
+        "page": "Ukurasa {page} wa {total}",
+        "prev": "Iliyotangulia",
+        "next": "Inayofuata"
+      },
+      "status": {
+        "pending": "Inasubiri",
+        "pass": "Imepitisha",
+        "warning": "Tahadhari",
+        "deviation": "Mchepuko"
+      },
+      "map": "Ramani ya njia",
+      "selected": "Ukaguzi uliochaguliwa",
+      "loading": "Inapakia ukaguzi wa njia...",
+      "error": "Imeshindwa kupakia ukaguzi wa njia.",
+      "retry": "Jaribu tena",
+      "empty": "Hakuna ukaguzi kwa kichujio hiki"
+    },
+    "deviation": {
+      "title": "Onyo la Mchepuko",
+      "vehicle": "Gari",
+      "zone": "Eneo",
+      "status": "Hali",
+      "active": "Kazi",
+      "cleared": "Simama",
+      "authorised": "Ruhusiwa",
+      "raisedAt": "Iliyoinuliwa",
+      "duration": "Muda",
+      "maxDeviation": "Mchepuko wa Juu",
+      "threshold": "Kiwango",
+      "authorisedBy": "Ruhusiwa na",
+      "authoriseButton": "Kuzingatia",
+      "viewTrail": "Tazama Njia ya Kila Hatua",
+      "durationFormat": "{duration}m",
+      "deviationFormat": "{meters}m / {threshold}m"
+    },
+    "map": {
+      "loading": "Inapakia ramani...",
+      "mapsUnavailable": "Huduma ya Google Maps haipatikani",
+      "fallbackMessage": "Google Maps haiwezi kuonekana. Kuonyesha orodha ya magari badala yake.",
+      "lastUpdated": "Iliyosasishwa {time}s iliyopita",
+      "dataUnavailable": "Data ya magari haipatikani kwa sasa",
+      "tryAgainSoon": "Data ya muda halisi itarejelea haraka.",
+      "staleVehicles": "gari {count} lililosimama",
+      "staleVehicles_plural": "magari {count} yaliyosimama",
+      "darkVehicles": "gari {count} cheusi (hakuna signal)",
+      "darkVehicles_plural": "magari {count} yenye jeusi (hakuna signal)",
+      "marker": {
+        "enRoute": "Kwenye Njia",
+        "servicing": "Inashughulikia",
+        "idle": "Karibu",
+        "stale": "Limesimama - hakuna ripoti kwa dakika 15",
+        "dark": "Cheusi - hakuna ripoti kwa dakika 30",
+        "deviating": "Ipeleka kutoka njia iliyopangwa",
+        "speed": "{speed} km/h"
+      },
+      "legend": {
+        "title": "Ufafanuzi",
+        "enRoute": "Kwenye Njia",
+        "servicing": "Inashughulikia",
+        "idle": "Karibu",
+        "stale": "Limesimama (hakuna signal)",
+        "deviating": "Mchepuko wa Njia",
+        "plannedRoute": "Njia iliyopangwa",
+        "actualRoute": "Njia Halisi"
+      },
+      "fallbackList": {
+        "title": "Magari",
+        "registrationNumber": "Usajili",
+        "zone": "Eneo",
+        "status": "Hali",
+        "speed": "Kasi",
+        "lastSeen": "Iliyoonekana Mwisho",
+        "flags": "Tahadhari",
+        "noVehicles": "Hakuna magari yanayopatikana",
+        "select": "Chagua",
+        "staleFlag": "Limesimama",
+        "deviationFlag": "Mchepuko"
+      }
+    }
+  }
+}
