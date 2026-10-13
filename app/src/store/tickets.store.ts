@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { fetchMyTickets, fetchTicketById } from '@/api/tickets.api'
@@ -39,6 +38,3 @@ export const useTicketsStore = defineStore('tickets', () => {
 
   return { tickets, vehicle, current, isLoading, hasError, loadMine, loadOne }
 })
-=======
-export const ticketsStore = {};
->>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Single source of truth for roles (SRS FR-003: exactly one role per user).
 export const ROLES = {
   CITIZEN: 'citizen',
@@ -25,6 +24,3 @@ export const ADMIN_HOME_PATH: Partial<Record<Role, string>> = {
   [ROLES.OPERATIONS_MANAGER]: '/admin/ops',
   [ROLES.COUNTY_ICT_ADMIN]: '/admin/accounts',
 }
-=======
-export const roles = {};
->>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

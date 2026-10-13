@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 export function useOnlineStatus() {
@@ -16,6 +15,3 @@ export function useOnlineStatus() {
 
   return { isOnline }
 }
-=======
-export function useOnlineStatus() { return {}; }
->>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

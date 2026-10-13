@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import type { Coordinates } from '@/helpers/geo'
 
 export type TicketStatus = 'assigned' | 'in_progress' | 'closing' | 'resolved' | 'blocked'
@@ -26,6 +25,3 @@ export interface MyTicketsResponse {
   vehicle: CrewVehicle | null
   tickets: Ticket[]
 }
-=======
-export interface Ticket {}
->>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

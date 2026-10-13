@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { http } from './http'
 import type { ApiSuccess } from '@/types/api'
 import type { MyTicketsResponse, Ticket } from '@/types/ticket'
@@ -51,20 +50,3 @@ export async function approveClosure(id: string): Promise<void> {
 export async function sendBackClosure(id: string): Promise<void> {
   await http.post(`/closure-approvals/${id}/send-back`)
 }
-=======
-import httpClient from './http';
-
-export const ticketsApi = {
-  async list() {
-    const res = await httpClient.get('/tickets');
-    return res.data;
-  },
-  async get(id) {
-    const res = await httpClient.get(`/tickets/${id}`);
-    return res.data;
-  },
-};
-
-export default ticketsApi;
-
->>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export interface Coordinates {
   lat: number
   lng: number
@@ -21,6 +20,3 @@ export function distanceMeters(a: Coordinates, b: Coordinates): number {
 export function mapsDirectionsUrl(to: Coordinates): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${to.lat},${to.lng}`
 }
-=======
-export const geoHelpers = {};
->>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

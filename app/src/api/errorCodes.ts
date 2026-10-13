@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Shared error-code registry (SRS §5.3). Add new codes here.
 export const ERROR_CODES = {
   ACCOUNT_LOCKED: 'ACCOUNT_LOCKED',
@@ -13,14 +12,3 @@ export function getApiErrorCode(err: unknown): string | null {
     ?.response?.data?.error?.code
   return code ?? null
 }
-=======
-export const ERROR_CODES = {
-  unauthorized: 'UNAUTHORIZED',
-  forbidden: 'FORBIDDEN',
-  badRequest: 'BAD_REQUEST',
-  notFound: 'NOT_FOUND',
-  serverError: 'SERVER_ERROR',
-} as const;
-
-export default ERROR_CODES;
->>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0

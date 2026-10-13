@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -132,7 +131,3 @@ onMounted(() => {
     </div>
   </section>
 </template>
-=======
-<template><main class="p-6"><h1 class="text-xl font-semibold text-slate-800">CloseTicketView</h1></main></template>
-<script setup lang="ts"></script>
->>>>>>> 3e83867f61750c832e15a66ca6a81072734dabd0
