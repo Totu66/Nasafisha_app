@@ -1,5 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router';
 import CitizenLayout from '../../layouts/CitizenLayout.vue';
+import HomeView from '../../views/citizen/HomeView.vue';
 import MyReportsView from '../../views/citizen/MyReportsView.vue';
 import ReportIssueView from '../../views/citizen/ReportIssueView.vue';
 import CommunityView from '../../views/citizen/CommunityView.vue';
@@ -20,7 +21,9 @@ export const citizenRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        redirect: '/citizen/reports',
+        name: 'CitizenHome',
+        component: HomeView,
+        meta: { title: 'Home' },
       },
       {
         path: 'reports',
