@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "nasafisha-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -27,16 +27,17 @@
     "vue-router": "^5.0.7"
   },
   "devDependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/roboto-mono": "^5.3.0",
     "@playwright/test": "^1.49.1",
-    "@typescript-eslint/parser": "^8.71.1",
     "@vitejs/plugin-vue": "^6.0.6",
     "eslint": "^9.16.1",
     "eslint-plugin-vue": "^9.0.0",
-    "jsdom": "^26.1.0",
+    "jsdom": "^30.1.2",
     "prettier": "^3.3.1",
     "typescript": "^5.7.2",
+    "typescript-eslint": "^8.71.1",
     "vite": "^8.0.12",
-    "vitest": "^2.1.7",
-    "vue-eslint-parser": "^10.4.1"
+    "vitest": "^2.1.7"
   }
 }

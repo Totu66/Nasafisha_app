@@ -1,0 +1,211 @@
+/* NASAFISHA Design Tokens — Foundations: Colour, Type, Spacing, Radii, Grid, Motion */
+:root {
+  /* 1. COLOUR — Lake Nakuru palette. WCAG AA compliant (>= 4.5:1). */
+  --ns-lake-950: #081B17;
+  --ns-lake-900: #0F2E27;   /* Headings, dark surfaces, sidebar */
+  --ns-lake-800: #185746;   /* Primary hover/pressed */
+  --ns-lake-700: #1F6F5C;   /* Primary brand green (contrast ratio 5.9:1 on white) */
+  --ns-lake-600: #29856F;
+  --ns-lake-500: #389E86;
+  --ns-lake-200: #B2D9CE;
+  --ns-lake-100: #DCEDE7;   /* Subtle green surface */
+  --ns-lake-50:  #F0F7F4;
+
+  /* Accent: Flamingo / Alert */
+  --ns-flamingo-700: #932344;
+  --ns-flamingo-600: #B8325A; /* Accent: illegal dumping, urgent alerts */
+  --ns-flamingo-100: #FBE4EB;
+  --ns-flamingo-50:  #FDF2F5;
+
+  /* Neutrals: Ash */
+  --ns-ash-900: #17211F;    /* Deep body text */
+  --ns-ash-800: #263330;
+  --ns-ash-700: #3B4743;
+  --ns-ash-600: #4F5B57;    /* Secondary / muted text */
+  --ns-ash-400: #889490;
+  --ns-ash-300: #B5BFBC;
+  --ns-ash-200: #D5DBD9;    /* Clean border lines */
+  --ns-ash-100: #E6EBE9;
+  --ns-ash-50:  #F3F5F4;    /* Standard application background */
+  --ns-white:   #FFFFFF;
+
+  /* Brand pairing: Forest & Cream (from Figma icon system) */
+  --ns-forest:  #20372F;
+  --ns-cream:   #F9F6EB;
+
+  /* Accent: Sunbird yellow (contractor portal / field crew chrome, Figma) */
+  --ns-sun-50:  #FDF7DE;
+  --ns-sun-500: #F5D142;
+  --ns-sun-600: #E4BE2E;
+  --ns-sun-700: #C79A1B;
+
+  /* Semantic status colors (SRS FR-012, FR-013, FR-020, FR-030) */
+  --ns-status-received-fg: #1E4E8C;
+  --ns-status-received-bg: #E3EEFB;
+  --ns-status-received-border: #BCD5F5;
+
+  --ns-status-progress-fg: #7A4B00;
+  --ns-status-progress-bg: #FFF1CC;
+  --ns-status-progress-border: #F7D788;
+
+  --ns-status-resolved-fg: #14563F;
+  --ns-status-resolved-bg: #DCF2E6;
+  --ns-status-resolved-border: #A3DEC0;
+
+  --ns-status-stale-fg:    #6B4A00;
+  --ns-status-stale-bg:    #FCE9B8;
+  --ns-status-stale-border: #EDCF72;
+
+  --ns-danger-fg:          #991B1B;
+  --ns-danger-bg:          #FEE2E2;
+  --ns-danger-border:      #F87171;
+
+  --ns-success-fg:         #166534;
+  --ns-success-bg:         #DCFCE7;
+  --ns-success-border:     #86EFAC;
+
+  /* Common surfaces */
+  --ns-bg: var(--ns-ash-50);
+  --ns-surface: var(--ns-white);
+  --ns-text: var(--ns-ash-900);
+  --ns-text-muted: var(--ns-ash-600);
+  --ns-border: var(--ns-ash-200);
+  --ns-primary: var(--ns-lake-700);
+  --ns-focus: #0B5FFF;      /* High visibility accessibility focus ring */
+
+  /* 2. TYPOGRAPHY — Inter (sans) & Roboto Mono (monospace) */
+  --ns-font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ns-font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --ns-text-xs: 0.8125rem;  /* 13px */
+  --ns-text-sm: 0.875rem;   /* 14px */
+  --ns-text-md: 1rem;       /* 16px body base */
+  --ns-text-lg: 1.25rem;    /* 20px */
+  --ns-text-xl: 1.5rem;     /* 24px */
+  --ns-text-2xl: 2rem;      /* 32px */
+  --ns-text-3xl: 2.5rem;    /* 40px */
+
+  --ns-weight-regular: 400;
+  --ns-weight-medium: 500;
+  --ns-weight-semibold: 600;
+  --ns-weight-bold: 700;
+
+  --ns-leading-tight: 1.25;
+  --ns-leading-normal: 1.4;
+  --ns-leading-body: 1.5;
+
+  /* 3. SPACING & SIZING — 4px modular base unit */
+  --ns-space-1: 0.25rem;   /* 4px */
+  --ns-space-2: 0.5rem;    /* 8px */
+  --ns-space-3: 0.75rem;   /* 12px */
+  --ns-space-4: 1rem;      /* 16px */
+  --ns-space-5: 1.5rem;    /* 24px */
+  --ns-space-6: 2rem;      /* 32px */
+  --ns-space-7: 3rem;      /* 48px */
+  --ns-space-8: 4rem;      /* 64px */
+
+  --ns-touch: 2.75rem;     /* 44px minimum tap target for field gloved hands */
+
+  /* 4. RADII */
+  --ns-radius-xs: 4px;
+  --ns-radius-sm: 6px;
+  --ns-radius-md: 8px;
+  --ns-radius-lg: 14px;
+  --ns-radius-xl: 20px;
+  --ns-radius-full: 9999px;
+
+  /* 5. ELEVATIONS / SHADOWS */
+  --ns-shadow-xs: 0 1px 2px rgba(15, 46, 39, 0.05);
+  --ns-shadow-sm: 0 1px 3px rgba(15, 46, 39, 0.08), 0 1px 2px rgba(15, 46, 39, 0.04);
+  --ns-shadow-md: 0 4px 6px -1px rgba(15, 46, 39, 0.08), 0 2px 4px -2px rgba(15, 46, 39, 0.05);
+  --ns-shadow-lg: 0 10px 15px -3px rgba(15, 46, 39, 0.08), 0 4px 6px -4px rgba(15, 46, 39, 0.04);
+  --ns-shadow-overlay: 0 12px 32px rgba(15, 46, 39, 0.25);
+
+  /* 6. GRID LAYOUT */
+  --ns-cols: 4;
+  --ns-gutter: var(--ns-space-4);
+  --ns-margin: var(--ns-space-4);
+  --ns-max-width: 80rem;
+
+  /* 7. MOTION & TRANSITIONS */
+  --ns-dur-fast: 100ms;
+  --ns-dur-base: 180ms;
+  --ns-dur-slow: 280ms;
+  --ns-ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ns-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ns-transition: 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (min-width: 48em) {
+  :root {
+    --ns-cols: 8;
+    --ns-gutter: var(--ns-space-5);
+    --ns-margin: var(--ns-space-5);
+  }
+}
+
+@media (min-width: 64em) {
+  :root {
+    --ns-cols: 12;
+    --ns-gutter: var(--ns-space-5);
+    --ns-margin: var(--ns-space-6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ns-dur-fast: 0.01ms;
+    --ns-dur-base: 0.01ms;
+    --ns-dur-slow: 0.01ms;
+    --ns-transition: 0.01ms;
+  }
+}
+
+/* Base application rules */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--ns-bg);
+  color: var(--ns-text);
+  font-family: var(--ns-font);
+  font-size: var(--ns-text-md);
+  line-height: var(--ns-leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ns-focus);
+  outline-offset: 2px;
+}
+
+/* Responsive grid system */
+.ns-container {
+  max-width: var(--ns-max-width);
+  margin-inline: auto;
+  padding-inline: var(--ns-margin);
+}
+
+.ns-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--ns-cols), minmax(0, 1fr));
+  gap: var(--ns-gutter);
+}
+
+.ns-grid > * {
+  grid-column: span var(--span, 4);
+}
+
+@media (min-width: 48em) {
+  .ns-grid > * {
+    grid-column: span var(--span-md, 8);
+  }
+}
+
+@media (min-width: 64em) {
+  .ns-grid > * {
+    grid-column: span var(--span-lg, 12);
+  }
+}

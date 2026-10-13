@@ -1,2 +1,149 @@
 @import "tailwindcss";
-body { font-family: sans-serif; }
+
+/* ---------------------------------------------------------------------------
+   Local webfonts (FE-032 · src/assets/fonts) — bundled so the PWA shell,
+   offline page and service-worker cache render with the real type stack.
+--------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/inter-latin-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./assets/fonts/inter-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./assets/fonts/inter-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./assets/fonts/inter-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('./assets/fonts/inter-latin-800.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/roboto-mono-latin-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./assets/fonts/roboto-mono-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./assets/fonts/roboto-mono-latin-700.woff2') format('woff2');
+}
+
+/* ---------------------------------------------------------------------------
+   Base element styles (FE-031 app shell)
+--------------------------------------------------------------------------- */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--ns-font, 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--ns-ash-50, #f3f5f4);
+  color: var(--ns-lake-900, #0f2e27);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--ns-font-mono, 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace);
+}
+
+/* Consistent keyboard focus across the app */
+:focus-visible {
+  outline: 2px solid var(--ns-primary, #1f6f5c);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--ns-primary, #1f6f5c) 24%, transparent);
+}
+
+/* Scrollbars follow the palette instead of the browser default */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ns-ash-300, #bcc5c1) transparent;
+}
+
+/* Reduced motion: drop transitions/animations for users who ask for it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

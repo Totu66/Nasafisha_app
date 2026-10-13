@@ -1,20 +1,43 @@
-import ContractorLoginView from '../../views/contractors/ContractorLoginView.vue';
-import EvidenceLedgerView from '../../views/contractors/EvidenceLedgerView.vue';
+import type { RouteRecordRaw } from 'vue-router';
+import ContractorScorecardView from '../../views/contractor/ContractorScorecardView.vue';
+import EvidenceLedgerView from '../../views/contractor/EvidenceLedgerView.vue';
+import ContractorLogin from '../../views/auth/ContractorLogin.vue';
 
-export default [
-  {
-    path: '/contractor',
-    name: 'ContractorHome',
-    redirect: '/contractor/login',
-  },
+export const contractorRoutes: RouteRecordRaw[] = [
   {
     path: '/contractor/login',
     name: 'ContractorLogin',
-    component: ContractorLoginView,
+    component: ContractorLogin,
+    meta: {
+      guestOnly: true,
+      title: 'Contractor Portal Sign-In',
+    },
   },
   {
-    path: '/contractor/evidence-ledger',
+    path: '/contractor',
+    name: 'ContractorRoot',
+    redirect: '/contractor/scorecard',
+  },
+  {
+    path: '/contractor/scorecard',
+    name: 'ContractorScorecard',
+    component: ContractorScorecardView,
+    meta: {
+      requiresAuth: true,
+      roles: ['contractor', 'admin'],
+      title: 'SLA Scorecard',
+    },
+  },
+  {
+    path: '/contractor/ledger',
     name: 'ContractorEvidenceLedger',
     component: EvidenceLedgerView,
+    meta: {
+      requiresAuth: true,
+      roles: ['contractor', 'admin'],
+      title: 'Evidence Ledger & Proof Audit',
+    },
   },
 ];
+
+export default contractorRoutes;
