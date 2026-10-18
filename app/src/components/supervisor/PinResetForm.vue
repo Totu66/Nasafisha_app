@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
 import { formatTime } from '@/helpers/date'
 import type { CrewAccount } from '@/types/crew'
 
-const props = defineProps<{ account: CrewAccount; isSaving: boolean; failed: boolean }>()
+defineProps<{ account: CrewAccount; isSaving: boolean; failed: boolean }>()
 const emit = defineEmits<{ (e: 'save', pin: string): void; (e: 'cancel'): void }>()
 const { t } = useI18n()
 

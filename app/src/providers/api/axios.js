@@ -41,14 +41,13 @@ axiosInstance.interceptors.response.use(
   },
   async (error) => {
     console.error("Response Error:", error);
-    const config = error.config; // Original request config
 
     /**Check if error.response exists (network errors might not have it) */
     if (error.response) {
       const status = error.response.status;
 
       /** Handle 401 Unauthorized error */
-      if (status === 401 /* && !config._retry */) {
+      if (status === 401) {
         // Add retry logic here if implementing token refresh
         console.warn("Unauthorized access (401). Logging out...");
         // Use dynamic import ONLY WHEN NEEDED inside the function

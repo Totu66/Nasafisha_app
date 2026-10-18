@@ -2,7 +2,7 @@
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
 import ClosureEvidencePair from '@/components/tickets/ClosureEvidencePair.vue'
 import TicketAuditTrail from '@/components/tickets/TicketAuditTrail.vue'
 import TicketStatusChip from '@/components/tickets/TicketStatusChip.vue'

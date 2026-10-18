@@ -5,12 +5,7 @@
       class="hidden lg:flex flex-col w-64 shrink-0 bg-[var(--ns-lake-900,#0F2E27)] text-emerald-100 sticky top-0 h-screen"
     >
       <router-link to="/admin" class="flex items-center gap-3 px-5 h-16 border-b border-white/10">
-        <div
-          class="w-9 h-9 rounded-xl bg-[var(--ns-primary,#1F6F5C)] flex items-center justify-center text-white font-bold shadow-xs"
-          aria-hidden="true"
-        >
-          N
-        </div>
+        <BrandLogo size="sm" :on-dark="true" :with-text="false" />
         <div>
           <p class="text-sm font-bold text-white leading-tight">{{ t('app') }}</p>
           <p class="text-[11px] text-emerald-300/70">County control</p>
@@ -45,23 +40,20 @@
 
     <!-- Main column -->
     <div class="flex-1 min-w-0 flex flex-col">
-      <!-- Top bar -->
-      <header class="bg-white border-b border-[var(--ns-ash-200,#D5DBD9)] sticky top-0 z-40 shadow-xs">
+      <!-- Top bar (Figma: sunbird-yellow admin chrome) -->
+      <header class="sticky top-0 z-40 bg-[var(--ns-sun-500,#F5D142)] text-[var(--ns-lake-950,#081B17)] shadow-xs">
         <div class="px-4 sm:px-6">
           <div class="flex items-center justify-between h-16 gap-4">
             <div class="flex items-center gap-3 min-w-0">
               <!-- Mobile brand -->
-              <div
-                class="lg:hidden w-9 h-9 rounded-xl bg-[var(--ns-primary,#1F6F5C)] flex items-center justify-center text-white font-bold text-sm shrink-0"
-                aria-hidden="true"
-              >
-                N
+              <div class="lg:hidden shrink-0">
+                <BrandLogo size="sm" :with-text="false" />
               </div>
               <div class="min-w-0">
-                <p class="text-sm font-semibold text-[var(--ns-lake-900,#0F2E27)] truncate">
+                <p class="text-sm font-bold truncate">
                   {{ currentTitle }}
                 </p>
-                <p class="text-[11px] text-[var(--ns-ash-600,#4F5B57)] truncate">
+                <p class="text-[11px] text-[var(--ns-lake-950,#081B17)]/65 truncate">
                   {{ authStore.user?.name || 'County operations' }}
                 </p>
               </div>
@@ -70,7 +62,7 @@
             <div class="flex items-center gap-2 shrink-0">
               <button
                 type="button"
-                class="hidden sm:flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-[var(--ns-ash-600,#4F5B57)] hover:bg-[var(--ns-ash-50,#F3F5F4)] transition"
+                class="hidden sm:flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold transition hover:bg-[var(--ns-lake-950,#081B17)]/10"
                 @click="toggleLocale()"
               >
                 {{ locale === 'en' ? 'Kiswahili' : 'English' }}
@@ -78,7 +70,7 @@
 
               <button
                 type="button"
-                class="p-2 rounded-lg text-[var(--ns-ash-600,#4F5B57)] hover:text-[var(--ns-lake-800,#185746)] hover:bg-[var(--ns-ash-50,#F3F5F4)] transition"
+                class="p-2 rounded-lg transition hover:bg-[var(--ns-lake-950,#081B17)]/10"
                 :title="t('nav.notifications')"
                 :aria-label="t('nav.notifications')"
               >
@@ -87,7 +79,7 @@
 
               <button
                 type="button"
-                class="p-2 rounded-lg text-[var(--ns-ash-600,#4F5B57)] hover:text-red-700 hover:bg-red-50 transition"
+                class="p-2 rounded-lg transition hover:bg-[var(--ns-lake-950,#081B17)]/10"
                 :title="t('common.signOut')"
                 :aria-label="t('common.signOut')"
                 @click="handleLogout"
@@ -99,15 +91,15 @@
         </div>
 
         <!-- Mobile nav -->
-        <div class="lg:hidden border-t border-[var(--ns-ash-200,#D5DBD9)] bg-[var(--ns-ash-50,#F3F5F4)] px-2 py-1.5 flex justify-around overflow-x-auto">
+        <div class="lg:hidden border-t border-[var(--ns-lake-950,#081B17)]/15 px-2 py-1.5 flex justify-around overflow-x-auto">
           <router-link
             v-for="item in navItems"
             :key="item.to"
             :to="item.to"
-            class="px-2.5 py-1.5 text-[11px] font-medium rounded-md flex flex-col items-center gap-0.5 shrink-0"
+            class="px-2.5 py-1.5 text-[11px] font-semibold rounded-md flex flex-col items-center gap-0.5 shrink-0"
             :class="isActive(item.to)
-              ? 'bg-white shadow-xs text-[var(--ns-primary,#1F6F5C)] font-bold'
-              : 'text-[var(--ns-ash-600,#4F5B57)]'"
+              ? 'bg-[var(--ns-lake-950,#081B17)] text-[var(--ns-sun-500,#F5D142)]'
+              : 'text-[var(--ns-lake-950,#081B17)]/65'"
           >
             <AppIcon :name="item.icon" :size="16" />
             {{ t(item.label) }}
@@ -130,7 +122,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { AppIcon } from '../components/common';
+import { AppIcon, BrandLogo } from '../components/common';
 import { useAuthStore } from '../store/auth.store';
 import { usePermission } from '../composables/usePermission';
 import { useI18n } from '../i18n';
@@ -145,6 +137,9 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/admin', label: 'nav.dashboard', icon: 'dashboard' },
   { to: '/admin/tickets', label: 'nav.tickets', icon: 'report' },
   { to: '/admin/fleet', label: 'nav.fleet', icon: 'truck' },
+  { to: '/admin/route-audit', label: 'nav.routeAudit', icon: 'route' },
+  { to: '/admin/deviation-alerts', label: 'nav.deviations', icon: 'route-deviation' },
+  { to: '/admin/contractors', label: 'nav.contractors', icon: 'chart-bar' },
   { to: '/admin/audit-logs', label: 'nav.audit', icon: 'audit-log' },
 ];
 

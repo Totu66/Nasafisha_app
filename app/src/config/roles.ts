@@ -48,6 +48,9 @@ export const ROLE_DEFINITIONS: Record<UserRole, RoleDefinition> = {
 
 export const ROLES: UserRole[] = Object.keys(ROLE_DEFINITIONS) as UserRole[];
 
+/** Alias used by the account-admin screens; the app's single source of truth is UserRole. */
+export type Role = UserRole;
+
 export function isUserRole(value: unknown): value is UserRole {
   return typeof value === 'string' && value in ROLE_DEFINITIONS;
 }

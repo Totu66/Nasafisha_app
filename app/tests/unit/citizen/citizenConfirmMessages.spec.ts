@@ -1,7 +1,13 @@
 import { readFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 import { citizenConfirmMessages } from '../../../src/i18n/citizenConfirm.messages'
 import { REPORT_STATES } from '../../../src/helpers/reportStatus'
+
+// jsdom's URL implementation mishandles relative file: URLs on Windows, so
+// resolve the source tree from this file's real path instead.
+const SRC_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '../../../src')
 
 type Tree = { [k: string]: string | Tree }
 const flatten = (o: Tree, prefix = ''): Record<string, string> =>
@@ -34,7 +40,7 @@ describe('citizen confirmation translations (en / sw)', () => {
   it('every t("…") key used in the new files exists', () => {
     const missing: string[] = []
     for (const f of FILES) {
-      const src = readFileSync(new URL(`../../../src/${f}`, import.meta.url), 'utf8')
+      const src = readFileSync(resolve(SRC_DIR, f), 'utf8')
       for (const m of src.matchAll(/\bt\('([\w.]+)'/g)) if (!(m[1] in en)) missing.push(`${f}: ${m[1]}`)
     }
     expect(missing).toEqual([])

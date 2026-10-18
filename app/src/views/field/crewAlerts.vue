@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
 import DeviationAlertCard from '@/components/fleet/DeviationAlertCard.vue'
 import { useSupervisorStore } from '@/store/supervisor.store'
 

@@ -2,7 +2,7 @@
 import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
 import TicketMapPreview from '@/components/tickets/TicketMapPreview.vue'
 import TicketStatusChip from '@/components/tickets/TicketStatusChip.vue'
 import { useGeolocation } from '@/composables/useGeolocation'

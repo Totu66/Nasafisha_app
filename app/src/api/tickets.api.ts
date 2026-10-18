@@ -1,4 +1,4 @@
-import { http } from './http'
+import http from './http'
 import type { ApiSuccess } from '@/types/api'
 import type { MyTicketsResponse, Ticket } from '@/types/ticket'
 import type { ClosureApproval } from '@/types/closureApproval'
@@ -50,3 +50,32 @@ export async function approveClosure(id: string): Promise<void> {
 export async function sendBackClosure(id: string): Promise<void> {
   await http.post(`/closure-approvals/${id}/send-back`)
 }
+
+/** Ticket row served by the mock API (json-server /tickets). */
+export interface TicketListItem {
+  id: number
+  name: string
+  zone: string
+  status: string
+  due: string
+}
+
+// Plain list used by the crew My Tickets screen; the server may be down,
+// in which case the caller falls back to its sample rows.
+export async function list(): Promise<TicketListItem[]> {
+  const { data } = await http.get<TicketListItem[]>('/tickets')
+  return data
+}
+
+const ticketsApi = {
+  list,
+  fetchMyTickets,
+  fetchTicketById,
+  requestClosureApproval,
+  fetchPendingClosureApprovals,
+  fetchClosureApproval,
+  approveClosure,
+  sendBackClosure,
+}
+
+export default ticketsApi

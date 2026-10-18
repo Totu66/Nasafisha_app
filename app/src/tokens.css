@@ -39,6 +39,12 @@
   --ns-sun-600: #E4BE2E;
   --ns-sun-700: #C79A1B;
 
+  /* Citizen mobile flow green (Figma onboarding/report cards) */
+  --ns-leaf-700: #15803D;   /* Primary citizen buttons */
+  --ns-leaf-600: #16A34A;
+  --ns-leaf-500: #22C55E;   /* Bright report panel background */
+  --ns-leaf-50:  #F0FDF4;
+
   /* Semantic status colors (SRS FR-012, FR-013, FR-020, FR-030) */
   --ns-status-received-fg: #1E4E8C;
   --ns-status-received-bg: #E3EEFB;

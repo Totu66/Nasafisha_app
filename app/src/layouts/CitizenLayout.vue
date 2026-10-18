@@ -6,17 +6,9 @@
         <div class="flex items-center justify-between h-16 gap-4">
           <!-- Brand -->
           <router-link to="/citizen/reports" class="flex items-center gap-3 group shrink-0">
-            <div
-              class="w-10 h-10 rounded-xl bg-[var(--ns-primary,#1F6F5C)] flex items-center justify-center text-white font-bold text-lg shadow-xs group-hover:bg-[var(--ns-lake-800,#185746)] transition"
-              aria-hidden="true"
-            >
-              N
-            </div>
+            <BrandLogo size="md" />
             <div class="hidden sm:block">
               <div class="flex items-center gap-2">
-                <span class="font-bold text-[var(--ns-lake-900,#0F2E27)] tracking-tight text-base">
-                  {{ t('app') }}
-                </span>
                 <span
                   class="text-[11px] px-2 py-0.5 rounded-md bg-[var(--ns-lake-50,#F0F7F4)] text-[var(--ns-primary,#1F6F5C)] font-mono font-medium"
                 >
@@ -50,7 +42,7 @@
               class="relative p-2 rounded-lg text-[var(--ns-ash-600,#4F5B57)] hover:text-[var(--ns-lake-800,#185746)] hover:bg-[var(--ns-ash-50,#F3F5F4)] transition"
               :title="t('nav.notifications')"
               :aria-label="t('nav.notifications')"
-              @click="router.push('/citizen/reports')"
+              @click="router.push('/citizen/notifications')"
             >
               <AppIcon name="notification" :size="19" />
               <span
@@ -125,7 +117,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { AppIcon, BaseButton, BaseBadge } from '../components/common';
+import { AppIcon, BaseButton, BaseBadge, BrandLogo } from '../components/common';
 import { useAuthStore } from '../store/auth.store';
 import { useOnlineStatus } from '../composables/useOnlineStatus';
 import { useI18n } from '../i18n';
@@ -165,6 +157,6 @@ function isActive(path: string): boolean {
 
 async function handleLogout(): Promise<void> {
   await authStore.logout();
-  router.push('/citizen/login');
+  router.push('/citizen/auth-choice');
 }
 </script>

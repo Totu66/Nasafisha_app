@@ -31,12 +31,7 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="flex items-center justify-between h-16 gap-4">
           <router-link to="/field/tickets" class="flex items-center gap-3 group shrink-0">
-            <div
-              class="w-10 h-10 rounded-xl bg-[var(--ns-lake-900,#0F2E27)] flex items-center justify-center text-white font-bold text-lg shadow-xs group-hover:bg-[var(--ns-lake-800,#185746)] transition"
-              aria-hidden="true"
-            >
-              N
-            </div>
+            <BrandLogo size="md" :with-text="false" />
             <div class="hidden sm:block">
               <div class="flex items-center gap-2">
                 <span class="font-bold text-[var(--ns-lake-900,#0F2E27)] tracking-tight text-base">
@@ -147,7 +142,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { AppIcon, BaseButton, BaseBadge } from '../components/common';
+import { AppIcon, BaseButton, BaseBadge, BrandLogo } from '../components/common';
 import { useAuthStore } from '../store/auth.store';
 import { useOnlineStatus } from '../composables/useOnlineStatus';
 import { useI18n } from '../i18n';
@@ -168,6 +163,7 @@ const { t, locale, toggleLocale } = useI18n();
 
 const nav = computed<NavItem[]>(() => [
   { to: '/field/tickets', label: 'nav.tickets', icon: 'report' },
+  { to: '/field/approvals', label: 'nav.approvals', icon: 'check' },
   { to: '/field/sync', label: 'nav.sync', shortLabel: 'nav.sync', icon: 'pending-sync' },
   { to: '/field/safety', label: 'nav.safety', shortLabel: 'nav.safety', icon: 'alert', badge: 2 },
 ]);

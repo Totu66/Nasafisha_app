@@ -49,7 +49,12 @@
             <span class="rounded-full px-2 py-1 text-xs font-semibold" :class="statusClass(ticket.status)">{{ statusText(ticket.status) }}</span>
           </span>
           <span>{{ t(ticket.due) }}</span>
-          <button class="text-left text-emerald-700 hover:text-emerald-600">{{ t('field.myTickets.open') }}</button>
+          <router-link
+            :to="`/field/tickets/${ticket.id}`"
+            class="text-left text-emerald-700 hover:text-emerald-600"
+          >
+            {{ t('field.myTickets.open') }}
+          </router-link>
         </div>
       </div>
     </div>

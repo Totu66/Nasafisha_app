@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
+import type { LocaleCode } from '../../config/constants'
 
-const { locale } = useI18n()
+const { locale, setLocale } = useI18n()
 const LANGUAGES = [
   { code: 'en', label: 'EN' },
   { code: 'sw', label: 'SW' },
 ]
 
 function select(code: string) {
-  locale.value = code
-  localStorage.setItem('nasafisha.locale', code)
+  setLocale(code as LocaleCode)
 }
 </script>
 

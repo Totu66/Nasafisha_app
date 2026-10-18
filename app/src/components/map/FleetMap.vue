@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 import { isMapsAvailable } from '@/providers/googleMaps';
 import type { LatLng } from '@/types/route';
-import RoutePolyline from '@/components/map/RoutePolyline.vue';
 
 const props = withDefaults(
   defineProps<{

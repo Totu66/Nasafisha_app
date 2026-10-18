@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
+import BrandLogo from './BrandLogo.vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 
 defineProps<{ userName: string; roleLabel: string }>()
@@ -9,7 +10,7 @@ const { t } = useI18n()
 
 <template>
   <header class="flex h-14 items-center justify-between border-b border-stone-200 bg-white px-4">
-    <span class="text-lg font-bold text-green-900">NASAFISHA</span>
+    <BrandLogo size="sm" />
 
     <div class="flex items-center gap-4">
       <LanguageSwitcher />

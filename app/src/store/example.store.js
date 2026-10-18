@@ -1,5 +1,4 @@
 import { ref } from "vue";
-import { useLocalStorage } from "@vueuse/core";
 import { defineStore } from "pinia";
 import api from "@/providers/api/axios";
 

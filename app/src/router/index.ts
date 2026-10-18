@@ -4,8 +4,17 @@ import adminRoutes from './routes/admin.routes';
 import citizenRoutes from './routes/citizen.routes';
 import fieldRoutes from './routes/field.routes';
 import contractorRoutes from './routes/contractor.routes';
+import legacyRoutes from './routes/legacy.routes';
 import StaffLogin from '../views/auth/StaffLogin.vue';
+import AdminLogin from '../views/auth/AdminLogin.vue';
 import CitizenLogin from '../views/auth/CitizenLogin.vue';
+import LanguageView from '../views/citizen/onboarding/LanguageView.vue';
+import AuthChoiceView from '../views/citizen/onboarding/AuthChoiceView.vue';
+import RegisterView from '../views/citizen/onboarding/RegisterView.vue';
+import PhoneView from '../views/citizen/onboarding/PhoneView.vue';
+import OtpView from '../views/citizen/onboarding/OtpView.vue';
+import PermissionsView from '../views/citizen/onboarding/PermissionsView.vue';
+import AllSetView from '../views/citizen/onboarding/AllSetView.vue';
 import ForbiddenView from '../views/auth/Forbidden.vue';
 import NotFoundView from '../views/auth/NotFound.vue';
 import { setupRouteGuards } from './guards';
@@ -14,11 +23,11 @@ import { homeRouteFor } from '../config/roles';
 
 /**
  * Public entry point: signed-in users go to their portal home,
- * guests land on the citizen sign-in (FR-001).
+ * guests land on the citizen language picker (FR-001).
  */
 function defaultHome(): string {
   const auth = useAuthStore();
-  return auth.isAuthenticated && auth.role ? homeRouteFor(auth.role) : '/citizen/login';
+  return auth.isAuthenticated && auth.role ? homeRouteFor(auth.role) : '/citizen/welcome';
 }
 
 const routes: RouteRecordRaw[] = [
@@ -38,13 +47,77 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  // Alternate admin login (email + password) — /login stays canonical
   {
-    path: '/citizen/login',
+    path: '/login/admin',
     component: AuthLayout,
     children: [
       {
         path: '',
-        name: 'CitizenLogin',
+        name: 'AdminLogin',
+        component: AdminLogin,
+        meta: {
+          guestOnly: true,
+          title: 'Admin Login',
+        },
+      },
+    ],
+  },
+  // Citizen onboarding: language → phone → OTP → camera/location (Figma mobile flow)
+  {
+    path: '/citizen/welcome',
+    name: 'CitizenLanguage',
+    component: LanguageView,
+    meta: {
+      guestOnly: true,
+      title: 'Choose your language',
+    },
+  },
+  // Login or register — the citizen picks which journey to start (FE decision)
+  {
+    path: '/citizen/auth-choice',
+    name: 'CitizenAuthChoice',
+    component: AuthChoiceView,
+    meta: {
+      guestOnly: true,
+      title: 'Sign in or register',
+    },
+  },
+  {
+    path: '/citizen/register',
+    name: 'CitizenRegister',
+    component: RegisterView,
+    meta: {
+      guestOnly: true,
+      title: 'Create your account',
+    },
+  },
+  {
+    path: '/citizen/login',
+    name: 'CitizenLogin',
+    component: PhoneView,
+    meta: {
+      guestOnly: true,
+      title: 'Citizen Sign-In',
+    },
+  },
+  {
+    path: '/citizen/login/otp',
+    name: 'CitizenOtp',
+    component: OtpView,
+    meta: {
+      guestOnly: true,
+      title: 'Enter code',
+    },
+  },
+  // Email + password alternative to the phone/OTP flow
+  {
+    path: '/citizen/login/email',
+    component: AuthLayout,
+    children: [
+      {
+        path: '',
+        name: 'CitizenEmailLogin',
         component: CitizenLogin,
         meta: {
           guestOnly: true,
@@ -52,6 +125,22 @@ const routes: RouteRecordRaw[] = [
         },
       },
     ],
+  },
+  {
+    path: '/citizen/onboarding/permissions',
+    name: 'CitizenPermissions',
+    component: PermissionsView,
+    meta: {
+      title: 'Camera & location',
+    },
+  },
+  {
+    path: '/citizen/onboarding/all-set',
+    name: 'CitizenAllSet',
+    component: AllSetView,
+    meta: {
+      title: 'All set',
+    },
   },
   {
     path: '/forbidden',
@@ -67,6 +156,9 @@ const routes: RouteRecordRaw[] = [
   ...citizenRoutes,
   ...fieldRoutes,
   ...contractorRoutes,
+
+  // Legacy demo screens (no auth guard)
+  ...legacyRoutes,
 
   // Root redirect
   {

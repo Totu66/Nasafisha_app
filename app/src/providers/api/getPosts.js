@@ -8,7 +8,7 @@ export const getPosts = () => {
 
   const load = async () => {
     try {
-      const response = await get("posts").then((response) => {
+      await get("posts").then((response) => {
         const data = response.data;
         posts.value = data;
         console.log(data);
@@ -30,7 +30,7 @@ export const getPost = (id) => {
 
   const load = async () => {
     try {
-      const response = await get(`posts/${id}`).then((response) => {
+      await get(`posts/${id}`).then((response) => {
         const data = response.data;
         post.value = data;
         console.log(data);

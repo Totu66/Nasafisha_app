@@ -10,15 +10,10 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
 import { useUsersStore } from "../store";
 
 /**VARIABLES */
 const usersStore = useUsersStore();
-
-// onMounted(() => {
-//   loadData();
-// });
 
 /**Function to load data from API */
 const loadData = async () => {

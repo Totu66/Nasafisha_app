@@ -1,42 +1,71 @@
 <template>
-  <section class="space-y-6">
-    <div>
-      <p class="text-xs font-medium uppercase tracking-[0.2em] text-emerald-600">Citizen portal</p>
-      <h1 class="mt-2 text-3xl font-bold text-slate-900">Welcome back</h1>
-    </div>
-
-    <div class="grid gap-4 md:grid-cols-2">
-      <router-link to="/citizen/report-new" class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md">
-        <div class="flex items-center gap-3">
-          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
-          </span>
-          <div>
-            <h2 class="text-lg font-semibold text-slate-900 group-hover:text-emerald-700">Report an issue</h2>
-            <p class="text-sm text-slate-500">Report dumping, blocked drains or hazards</p>
-          </div>
-        </div>
+  <section>
+    <!-- Bright green report panel (Figma citizen home) -->
+    <div class="rounded-2xl bg-[var(--ns-leaf-500,#22C55E)] p-5">
+      <router-link
+        to="/citizen/report-new"
+        class="inline-block rounded-xl bg-[var(--ns-leaf-700,#15803D)] px-4 py-3 text-white transition hover:bg-[#166534]"
+      >
+        <p class="text-sm font-bold">{{ t('home.reportTitle') }}</p>
+        <p class="mt-0.5 text-xs text-[var(--ns-leaf-50,#F0FDF4)]">{{ t('home.takesAbout') }}</p>
       </router-link>
 
-      <router-link to="/citizen/reports" class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md">
-        <div class="flex items-center gap-3">
-          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-600">
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
-          </span>
-          <div>
-            <h2 class="text-lg font-semibold text-slate-900 group-hover:text-emerald-700">My reports</h2>
-            <p class="text-sm text-slate-500">Track the status of your submissions</p>
-          </div>
-        </div>
-      </router-link>
-    </div>
+      <h2 class="mt-6 text-base font-bold text-[var(--ns-ash-900,#17211F)]">{{ t('home.recent') }}</h2>
 
-    <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-      <h2 class="text-lg font-semibold text-slate-900">Recent activity</h2>
-      <p class="mt-4 text-sm text-slate-500">No recent activity.</p>
+      <div class="mt-3 divide-y divide-[var(--ns-ash-100,#E6EBE9)] rounded-xl bg-white">
+        <div
+          v-for="report in reports"
+          :key="report.reference"
+          class="flex items-center justify-between gap-3 px-4 py-3.5"
+        >
+          <div class="min-w-0">
+            <p class="font-mono text-sm font-bold text-[var(--ns-ash-900,#17211F)]">{{ report.reference }}</p>
+            <p class="mt-0.5 truncate text-xs text-[var(--ns-ash-600,#4F5B57)]">
+              {{ report.category }} · {{ report.section }}
+            </p>
+          </div>
+          <span
+            class="shrink-0 rounded-md px-2 py-1 text-[11px] font-semibold"
+            :class="report.status === 'inProgress'
+              ? 'bg-[var(--ns-status-progress-bg,#FFF1CC)] text-[var(--ns-status-progress-fg,#7A4B00)]'
+              : 'bg-[var(--ns-status-resolved-bg,#DCF2E6)] text-[var(--ns-status-resolved-fg,#14563F)]'"
+          >
+            {{ t(`home.${report.status}`) }}
+          </span>
+        </div>
+
+        <p v-if="!reports.length" class="px-4 py-6 text-center text-sm text-[var(--ns-ash-600,#4F5B57)]">
+          {{ t('home.noReports') }}
+        </p>
+      </div>
+
+      <router-link
+        to="/citizen/disposal-guidance"
+        class="mt-4 inline-block rounded-xl border border-white/70 bg-white/90 px-4 py-2.5 text-sm font-semibold text-[var(--ns-leaf-700,#15803D)] transition hover:bg-white"
+      >
+        Disposal guidance
+      </router-link>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { useOnboardingI18n } from '../../composables/useOnboardingI18n';
+
+const { t } = useOnboardingI18n();
+
+const reports = [
+  {
+    reference: 'NSF-260915-0042',
+    category: 'Missed collection',
+    section: 'Section 5B',
+    status: 'inProgress' as const,
+  },
+  {
+    reference: 'NSF-260992-0017',
+    category: 'Illegal dumping',
+    section: 'Lanesi',
+    status: 'resolved' as const,
+  },
+];
 </script>

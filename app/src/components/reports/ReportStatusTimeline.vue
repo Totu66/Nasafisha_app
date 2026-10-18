@@ -16,20 +16,23 @@ const { t } = useCitizenConfirmI18n()
       :aria-current="step.status === 'current' ? 'step' : undefined"
     >
       <span
-        class="mt-1 inline-block h-4 w-4 shrink-0 rounded-full border-2"
+        class="mt-1 inline-block h-3.5 w-3.5 shrink-0 rounded-full"
         :class="{
-          'border-green-700 bg-green-700': step.status === 'done',
-          'border-green-700 bg-white ring-4 ring-green-200': step.status === 'current',
-          'border-gray-300 bg-white': step.status === 'upcoming',
+          'bg-[var(--ns-leaf-600,#16A34A)]': step.status === 'done',
+          'bg-[var(--ns-sun-600,#E4BE2E)] ring-4 ring-[var(--ns-sun-50,#FDF7DE)]': step.status === 'current',
+          'bg-[var(--ns-ash-300,#B5BFBC)]': step.status === 'upcoming',
         }"
         aria-hidden="true"
       />
       <div>
-        <p :class="step.status === 'upcoming' ? 'text-gray-500' : 'font-semibold'">
+        <p
+          class="text-sm"
+          :class="step.status === 'upcoming' ? 'text-[var(--ns-ash-600,#4F5B57)]' : 'font-semibold text-[var(--ns-ash-900,#17211F)]'"
+        >
           {{ t(`state.${step.state}`) }}
           <span class="sr-only"> · {{ t(`timeline.${step.status}`) }}</span>
         </p>
-        <p v-if="step.at" class="text-sm text-gray-600">{{ formatTimestamp(step.at, locale) }}</p>
+        <p v-if="step.at" class="text-xs text-[var(--ns-ash-600,#4F5B57)]">{{ formatTimestamp(step.at, locale) }}</p>
       </div>
     </li>
   </ol>

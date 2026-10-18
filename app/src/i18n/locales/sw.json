@@ -30,6 +30,7 @@
                 "guidance":  "Mwongozo wa taka",
                 "cleanupEvents":  "Matukio ya usafi",
                 "tickets":  "Tiketi zangu",
+                "approvals":  "Idhini",
                 "sync":  "Zinasubiri kusawazishwa",
                 "safety":  "Tahadhari za usalama",
                 "attendance":  "Mahudhurio",
@@ -38,6 +39,9 @@
                 "scorecard":  "Kadi ya SLA",
                 "ledger":  "Daftari uthibitisho",
                 "fleet":  "Ramani ya usafirishaji",
+                "routeAudit":  "Ukaguzi wa njia",
+                "deviations":  "Tahadhari za mienendo",
+                "contractors":  "Makandarasi",
                 "audit":  "Kumbukumbu za ukaguzi",
                 "admin":  "Msimamizi"
             },
@@ -55,6 +59,20 @@
                  "accessKey":  "Ufunguo wa ufikiaji",
                  "pin":  "PIN"
              },
+    "adminLogin":  {
+                       "title":  "Kuingia kwa wafanyakazi wa kaunti",
+                       "email":  "Barua pepe ya mfanyakazi",
+                       "password":  "Nenosiri",
+                       "submit":  "Ingia",
+                       "submitting":  "Inaingia…",
+                       "lockedHelp":  "Umefungwa? Wasiliana na msimamizi wako wa mfumo.",
+                       "errors":  {
+                                      "locked":  "Akaunti yako imefungwa. Wasiliana na msimamizi wako.",
+                                      "inactive":  "Akaunti yako haijaamilishwa. Wasiliana na msimamizi wako.",
+                                      "invalid":  "Barua pepe au nenosiri si sahihi.",
+                                      "generic":  "Kuingia kumeshindwa. Jaribu tena."
+                                  }
+                   },
     "status":  {
                    "received":  "Imepokelewa",
                    "inProgress":  "Inaendelea",

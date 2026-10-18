@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
 import TicketQueueTable from '@/components/tickets/TicketQueueTable.vue'
 import { useAdminTicketsStore } from '@/store/adminTickets.store'
 import type { AdminTicketRow } from '@/types/ticketAdmin'

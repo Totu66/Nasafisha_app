@@ -17,18 +17,11 @@ const zoneFilter = ref('all');
 const dateFrom = ref('');
 const dateTo = ref('');
 const selectedAuditId = ref<string | null>(null);
-const sortKey = ref<'distanceVarianceMeters' | 'durationVarianceSeconds' | 'shiftEnd'>('distanceVarianceMeters');
+type SortKey = 'distanceVarianceMeters' | 'durationVarianceSeconds' | 'shiftEnd';
+const sortKey = ref<SortKey>('distanceVarianceMeters');
 const sortDirection = ref<'asc' | 'desc'>('desc');
 const page = ref(1);
 const pageSize = 10;
-
-const sortOptions = [
-  { key: 'distanceVarianceMeters', label: t('fleet.auditView.table.distanceVariance') },
-  { key: 'durationVarianceSeconds', label: t('fleet.auditView.table.timeVariance') },
-  { key: 'shiftEnd', label: t('fleet.auditView.table.shiftEnd') },
-] as const;
-
-type SortKey = (typeof sortOptions)[number]['key'];
 
 const vehicleOptions = computed(() => {
   const uniqueVehicles = new Map<string, { value: string; label: string }>();
@@ -143,18 +136,6 @@ const formatVariance = (value: number | null | undefined, suffix: string): strin
 
   const sign = value > 0 ? '+' : '';
   return `${sign}${value.toFixed(1)} ${suffix}`;
-};
-
-const formatDuration = (seconds: number | null | undefined): string => {
-  if (seconds === null || seconds === undefined || Number.isNaN(seconds)) {
-    return '—';
-  }
-
-  const totalMinutes = Math.max(0, Math.round(seconds / 60));
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = totalMinutes % 60;
-
-  return `${hours}h ${minutes}m`;
 };
 
 const resetFilters = (): void => {

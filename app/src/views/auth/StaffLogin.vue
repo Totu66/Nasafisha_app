@@ -1,8 +1,9 @@
 <template>
-  <section class="mx-auto max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+  <section class="w-full">
     <div class="mb-6">
-      <p class="text-xs font-medium uppercase tracking-[0.2em] text-emerald-600">Staff login</p>
-      <h1 class="mt-2 text-3xl font-bold text-slate-900">Operations access</h1>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ns-lake-700,#1F6F5C)]">Staff login</p>
+      <h1 class="mt-2 text-3xl font-bold tracking-tight text-[var(--ns-lake-900,#0F2E27)]">Operations access</h1>
+      <p class="mt-2 text-sm text-[var(--ns-ash-600,#4F5B57)]">County staff and control-room sign-in.</p>
     </div>
 
     <form class="space-y-5" @submit.prevent="submitLogin">
@@ -10,31 +11,50 @@
         {{ errorMessage }}
       </BaseAlert>
 
-      <label class="block text-sm font-medium text-slate-700">
-        <span class="mb-2 block">Staff email</span>
-        <input v-model="form.email" type="email" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 outline-none transition focus:border-emerald-500" placeholder="ops@nasafisha.org" />
-      </label>
+      <BaseInput
+        v-model="form.email"
+        label="Staff email"
+        type="email"
+        inputmode="email"
+        autocomplete="username"
+        placeholder="ops@nasafisha.org"
+        :required="true"
+      />
 
-      <label class="block text-sm font-medium text-slate-700">
-        <span class="mb-2 block">Password</span>
-        <input v-model="form.password" type="password" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 outline-none transition focus:border-emerald-500" placeholder="••••••••" />
-      </label>
+      <BaseInput
+        v-model="form.password"
+        label="Password"
+        type="password"
+        autocomplete="current-password"
+        placeholder="••••••••"
+        :required="true"
+      />
 
-      <button
+      <BaseButton
         type="submit"
-        class="w-full rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-60"
-        :disabled="authStore.isLoading"
+        variant="primary"
+        size="lg"
+        :block="true"
+        :loading="authStore.isLoading"
+        :disabled="!form.email || !form.password"
       >
         {{ authStore.isLoading ? 'Signing in…' : 'Sign in as staff' }}
-      </button>
+      </BaseButton>
     </form>
+
+    <p class="mt-6 text-center text-xs text-[var(--ns-ash-600,#4F5B57)]">
+      Contractor?
+      <router-link class="font-semibold underline underline-offset-2 text-[var(--ns-lake-800,#185746)]" to="/contractor/login">
+        Contractor portal
+      </router-link>
+    </p>
   </section>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { BaseAlert } from '../../components/common';
+import { BaseAlert, BaseButton, BaseInput } from '../../components/common';
 import { useAuthStore } from '../../store/auth.store';
 
 const router = useRouter();

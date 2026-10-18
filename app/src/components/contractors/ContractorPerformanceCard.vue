@@ -1,20 +1,22 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-    <!-- KPI 1: Overall SLA Compliance Rate -->
-    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs flex flex-col justify-between">
+    <!-- KPI 1: Overall SLA Compliance Rate (dark card per Figma) -->
+    <div class="rounded-2xl border border-[var(--ns-lake-900,#0F2E27)] bg-[var(--ns-lake-900,#0F2E27)] p-5 text-white flex flex-col justify-between">
       <div>
-        <div class="flex items-center justify-between text-slate-500 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider font-mono">SLA Compliance Rate</span>
-          <div class="w-8 h-8 rounded-lg bg-emerald-50 text-[var(--ns-primary,#1F6F5C)] flex items-center justify-center">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[11px] font-semibold uppercase tracking-wider font-mono text-[var(--ns-lake-100,#DCEDE7)]">SLA Compliance Rate</span>
+          <div class="w-8 h-8 rounded-lg bg-white/10 text-[var(--ns-sun-500,#F5D142)] flex items-center justify-center">
             <AppIcon name="efficiency-index" :size="18" />
           </div>
         </div>
         <div class="flex items-baseline gap-2">
-          <span class="text-3xl font-extrabold text-slate-900 font-mono">{{ metrics?.complianceRate ?? 96.4 }}%</span>
+          <span class="text-3xl font-extrabold font-mono">{{ metrics?.complianceRate ?? 96.4 }}%</span>
           <span
             :class="[
               'text-xs font-semibold px-1.5 py-0.5 rounded-md flex items-center gap-0.5',
-              (metrics?.complianceDelta ?? 1.4) >= 0 ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'
+              (metrics?.complianceDelta ?? 1.4) >= 0
+                ? 'bg-[var(--ns-sun-500,#F5D142)] text-[var(--ns-lake-950,#081B17)]'
+                : 'bg-[var(--ns-danger-bg,#FEE2E2)] text-[var(--ns-danger-fg,#991B1B)]'
             ]"
           >
             <AppIcon :name="(metrics?.complianceDelta ?? 1.4) >= 0 ? 'trend-up' : 'trend-down'" :size="14" />
@@ -22,73 +24,78 @@
           </span>
         </div>
       </div>
-      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-        <span>Contract Target: <strong class="text-slate-700 font-mono">{{ metrics?.targetComplianceRate ?? 95.0 }}%</strong></span>
-        <BaseBadge :variant="(metrics?.complianceRate ?? 96.4) >= (metrics?.targetComplianceRate ?? 95.0) ? 'resolved' : 'danger'" size="sm">
+      <div class="mt-4 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-[var(--ns-lake-100,#DCEDE7)]">
+        <span>Contract target: <strong class="font-mono text-white">{{ metrics?.targetComplianceRate ?? 95.0 }}%</strong></span>
+        <span
+          class="rounded-full px-2 py-0.5 text-[11px] font-bold"
+          :class="(metrics?.complianceRate ?? 96.4) >= (metrics?.targetComplianceRate ?? 95.0)
+            ? 'bg-[var(--ns-sun-500,#F5D142)] text-[var(--ns-lake-950,#081B17)]'
+            : 'bg-[var(--ns-danger-bg,#FEE2E2)] text-[var(--ns-danger-fg,#991B1B)]'"
+        >
           {{ (metrics?.complianceRate ?? 96.4) >= (metrics?.targetComplianceRate ?? 95.0) ? 'SLA Met' : 'Breach Warning' }}
-        </BaseBadge>
+        </span>
       </div>
     </div>
 
     <!-- KPI 2: Mean Time to Resolution (MTTR) -->
-    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs flex flex-col justify-between">
+    <div class="rounded-2xl border border-[var(--ns-ash-200,#D5DBD9)] bg-white p-5 flex flex-col justify-between">
       <div>
-        <div class="flex items-center justify-between text-slate-500 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider font-mono">Mean Time to Resolve</span>
-          <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[11px] font-semibold uppercase tracking-wider font-mono text-[var(--ns-ash-600,#4F5B57)]">Mean Time to Resolve</span>
+          <div class="w-8 h-8 rounded-lg bg-[var(--ns-cream,#F9F6EB)] text-[var(--ns-lake-800,#185746)] flex items-center justify-center">
             <AppIcon name="timer" :size="18" />
           </div>
         </div>
         <div class="flex items-baseline gap-2">
-          <span class="text-3xl font-extrabold text-slate-900 font-mono">{{ metrics?.mttrHours ?? 3.2 }}h</span>
-          <span class="text-xs text-slate-500 font-medium">per ticket avg</span>
+          <span class="text-3xl font-extrabold font-mono text-[var(--ns-lake-900,#0F2E27)]">{{ metrics?.mttrHours ?? 3.2 }}h</span>
+          <span class="text-xs text-[var(--ns-ash-600,#4F5B57)] font-medium">per ticket avg</span>
         </div>
       </div>
-      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-        <span>Max SLA Threshold: <strong class="text-slate-700 font-mono">{{ metrics?.mttrTargetHours ?? 4.0 }}h</strong></span>
-        <span class="text-emerald-700 font-medium text-[11px]">-48 min faster than limit</span>
+      <div class="mt-4 pt-3 border-t border-[var(--ns-ash-100,#E6EBE9)] flex items-center justify-between text-xs text-[var(--ns-ash-600,#4F5B57)]">
+        <span>Max SLA threshold: <strong class="font-mono text-[var(--ns-ash-800,#263330)]">{{ metrics?.mttrTargetHours ?? 4.0 }}h</strong></span>
+        <span class="font-medium text-[11px] text-[var(--ns-status-resolved-fg,#14563F)]">Within limit</span>
       </div>
     </div>
 
-    <!-- KPI 3: First-Time Fix & Photographic Verification -->
-    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs flex flex-col justify-between">
+    <!-- KPI 3: Photographic Verification -->
+    <div class="rounded-2xl border border-[var(--ns-ash-200,#D5DBD9)] bg-white p-5 flex flex-col justify-between">
       <div>
-        <div class="flex items-center justify-between text-slate-500 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider font-mono">Photo Verification</span>
-          <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[11px] font-semibold uppercase tracking-wider font-mono text-[var(--ns-ash-600,#4F5B57)]">Photo Verification</span>
+          <div class="w-8 h-8 rounded-lg bg-[var(--ns-cream,#F9F6EB)] text-[var(--ns-lake-800,#185746)] flex items-center justify-center">
             <AppIcon name="shield-check" :size="18" />
           </div>
         </div>
         <div class="flex items-baseline gap-2">
-          <span class="text-3xl font-extrabold text-slate-900 font-mono">{{ metrics?.firstTimeFixRate ?? 98.2 }}%</span>
-          <span class="text-xs text-emerald-700 font-medium">audit pass</span>
+          <span class="text-3xl font-extrabold font-mono text-[var(--ns-lake-900,#0F2E27)]">{{ metrics?.firstTimeFixRate ?? 98.2 }}%</span>
+          <span class="text-xs font-medium text-[var(--ns-status-resolved-fg,#14563F)]">audit pass</span>
         </div>
       </div>
-      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-        <span>GPS Distance &lt; 50m: <strong class="text-slate-700 font-mono">100%</strong></span>
-        <span class="text-slate-600">FR-013 Standard</span>
+      <div class="mt-4 pt-3 border-t border-[var(--ns-ash-100,#E6EBE9)] flex items-center justify-between text-xs text-[var(--ns-ash-600,#4F5B57)]">
+        <span>GPS distance &lt; 50m: <strong class="font-mono text-[var(--ns-ash-800,#263330)]">100%</strong></span>
+        <span>FR-013 standard</span>
       </div>
     </div>
 
     <!-- KPI 4: Tickets & Breaches -->
-    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs flex flex-col justify-between">
+    <div class="rounded-2xl border border-[var(--ns-ash-200,#D5DBD9)] bg-white p-5 flex flex-col justify-between">
       <div>
-        <div class="flex items-center justify-between text-slate-500 mb-2">
-          <span class="text-xs font-semibold uppercase tracking-wider font-mono">Total Closed Tickets</span>
-          <div class="w-8 h-8 rounded-lg bg-purple-50 text-purple-700 flex items-center justify-center">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[11px] font-semibold uppercase tracking-wider font-mono text-[var(--ns-ash-600,#4F5B57)]">Total Closed Tickets</span>
+          <div class="w-8 h-8 rounded-lg bg-[var(--ns-cream,#F9F6EB)] text-[var(--ns-lake-800,#185746)] flex items-center justify-center">
             <AppIcon name="check" :size="18" />
           </div>
         </div>
         <div class="flex items-baseline gap-3">
-          <span class="text-3xl font-extrabold text-slate-900 font-mono">{{ metrics?.totalTicketsResolved ?? 142 }}</span>
-          <span class="text-xs text-red-600 font-medium font-mono">
+          <span class="text-3xl font-extrabold font-mono text-[var(--ns-lake-900,#0F2E27)]">{{ metrics?.totalTicketsResolved ?? 142 }}</span>
+          <span class="text-xs font-medium font-mono text-[var(--ns-danger-fg,#991B1B)]">
             {{ metrics?.slaBreachesCount ?? 5 }} breaches
           </span>
         </div>
       </div>
-      <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-        <span>Hauled: <strong class="text-slate-700 font-mono">{{ metrics?.totalVolumeTonnes ?? 184.6 }}t</strong></span>
-        <span>Fleet active: <strong class="text-slate-700 font-mono">{{ metrics?.activeVehiclesTracked ?? 7 }}/8</strong></span>
+      <div class="mt-4 pt-3 border-t border-[var(--ns-ash-100,#E6EBE9)] flex items-center justify-between text-xs text-[var(--ns-ash-600,#4F5B57)]">
+        <span>Hauled: <strong class="font-mono text-[var(--ns-ash-800,#263330)]">{{ metrics?.totalVolumeTonnes ?? 184.6 }}t</strong></span>
+        <span>Fleet active: <strong class="font-mono text-[var(--ns-ash-800,#263330)]">{{ metrics?.activeVehiclesTracked ?? 7 }}/8</strong></span>
       </div>
     </div>
   </div>
@@ -96,7 +103,7 @@
 
 <script setup lang="ts">
 import type { ScorecardMetrics } from '../../types/contractor';
-import { AppIcon, BaseBadge } from '../common';
+import { AppIcon } from '../common';
 
 defineProps<{
   metrics?: ScorecardMetrics | null;

@@ -26,14 +26,15 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import authApi from '../../api/auth.api';
+import { useAuthStore } from '../../store/auth.store';
 
 const router = useRouter();
+const auth = useAuthStore();
 const form = reactive({ email: '', password: '' });
 
 const submitLogin = async () => {
   try {
-    await authApi.login({ email: form.email, password: form.password, role: 'contractor' });
+    await auth.login({ email: form.email, password: form.password, role: 'contractor' });
     router.push('/contractor');
   } catch (error) {
     console.error('Contractor login failed', error);

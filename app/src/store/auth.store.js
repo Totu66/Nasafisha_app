@@ -49,7 +49,7 @@ export const useAuthStore = defineStore("auth", () => {
 
   /**Login method for remote instance */
   async function login_remote(credentials) {
-    const response = await post("login", credentials)
+    await post("login", credentials)
       .then((response) => {
         console.log(response);
         user.value = response.data.user

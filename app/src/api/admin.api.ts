@@ -1,4 +1,4 @@
-import { http } from './http'
+import http from './http'
 import type { ApiSuccess } from '@/types/api'
 import type { AdminTicketDetail, AdminTicketRow } from '@/types/ticketAdmin'
 import type { Account, NewAccountPayload } from '@/types/account'

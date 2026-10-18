@@ -1,3 +1,11 @@
 <template>
-  <main>Community</main>
+  <main class="space-y-3">
+    <h1 class="text-xl font-semibold text-slate-800">Community</h1>
+    <router-link
+      class="inline-block rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-emerald-800 hover:border-emerald-400"
+      to="/citizen/cleanup-events"
+    >
+      Cleanup events
+    </router-link>
+  </main>
 </template>

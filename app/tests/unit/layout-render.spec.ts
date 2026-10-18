@@ -20,13 +20,14 @@ describe('layout wiring', () => {
     app.mount(el);
     const auth = useAuthStore();
 
-    // Guest → CitizenLogin inside AuthLayout
+    // Guest → citizen language picker inside CitizenOnboardLayout (FR-001)
     await router.replace('/');
     await nextTick();
     await nextTick();
     const guestHtml = el.innerHTML;
-    expect(guestHtml).toContain('SRS-NASAFISHA-001');
-    expect(guestHtml).toContain('Citizen login');
+    expect(guestHtml).toContain('Language / Lugha');
+    expect(guestHtml).toContain('Continue');
+    expect(guestHtml).not.toContain('SRS-NASAFISHA-001');
 
     // Citizen portal → CitizenLayout
     auth.setSession({ token: 't-citizen', user: { id: 'u1', name: 'Wanjiru', role: 'citizen' } });

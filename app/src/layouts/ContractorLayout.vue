@@ -7,13 +7,7 @@
           to="/contractor/scorecard"
           class="flex shrink-0 items-center gap-2.5"
         >
-          <span
-            class="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--ns-lake-950,#081B17)] text-sm font-extrabold text-[var(--ns-sun-500,#F5D142)]"
-            aria-hidden="true"
-          >
-            N
-          </span>
-          <span class="text-base font-extrabold tracking-tight">NASAFISHA</span>
+          <BrandLogo size="sm" />
         </router-link>
 
         <nav
@@ -105,7 +99,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { AppIcon } from '../components/common';
+import { AppIcon, BrandLogo } from '../components/common';
 import { useAuthStore } from '../store/auth.store';
 
 interface NavItem {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
 import ClosureEvidencePair from '@/components/tickets/ClosureEvidencePair.vue'
 import { approveClosure, fetchClosureApproval, sendBackClosure } from '@/api/tickets.api'
 import { formatTime } from '@/helpers/date'

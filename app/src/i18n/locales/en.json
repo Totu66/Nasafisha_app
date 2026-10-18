@@ -30,6 +30,7 @@
                 "guidance":  "Disposal guidance",
                 "cleanupEvents":  "Cleanup events",
                 "tickets":  "My tickets",
+                "approvals":  "Approvals",
                 "sync":  "Pending sync",
                 "safety":  "Safety alerts",
                 "attendance":  "Attendance",
@@ -38,6 +39,9 @@
                 "scorecard":  "SLA scorecard",
                 "ledger":  "Evidence ledger",
                 "fleet":  "Fleet map",
+                "routeAudit":  "Route audit",
+                "deviations":  "Deviation alerts",
+                "contractors":  "Contractors",
                 "audit":  "Audit logs",
                 "admin":  "Admin"
             },
@@ -55,6 +59,20 @@
                  "accessKey":  "Access key",
                  "pin":  "PIN"
              },
+    "adminLogin":  {
+                       "title":  "County staff sign-in",
+                       "email":  "Staff email",
+                       "password":  "Password",
+                       "submit":  "Sign in",
+                       "submitting":  "Signing in…",
+                       "lockedHelp":  "Locked out? Contact your system administrator.",
+                       "errors":  {
+                                      "locked":  "Your account is locked. Contact your administrator.",
+                                      "inactive":  "Your account is inactive. Contact your administrator.",
+                                      "invalid":  "Email or password is incorrect.",
+                                      "generic":  "Sign-in failed. Try again."
+                                  }
+                   },
     "status":  {
                    "received":  "Received",
                    "inProgress":  "In progress",

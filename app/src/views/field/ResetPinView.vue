@@ -2,7 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
 import PinResetForm from '@/components/supervisor/PinResetForm.vue'
 import { useSupervisorStore } from '@/store/supervisor.store'
 

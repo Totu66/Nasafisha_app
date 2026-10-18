@@ -2,7 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
 import ClosureEvidencePair from '@/components/tickets/ClosureEvidencePair.vue'
 import ClosureMismatchAlert from '@/components/tickets/ClosureMismatchAlert.vue'
 import { requestClosureApproval } from '@/api/tickets.api'
@@ -24,6 +24,7 @@ const { current: ticket } = storeToRefs(store)
 
 // KELVIN (FE-006): his camera component calls onPhotoCaptured(...) when a photo is taken.
 const afterPhoto = ref<AfterPhoto | null>(null)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function onPhotoCaptured(photo: AfterPhoto) {
   afterPhoto.value = photo
 }

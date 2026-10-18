@@ -1,8 +1,8 @@
 {
   "reports": [
-    { "id": 1, "title": "Illegal dumping", "location": "Kibera", "status": "In review", "updated": "2 hours ago" },
-    { "id": 2, "title": "Blocked drain", "location": "Mikocheni", "status": "Assigned", "updated": "Today" },
-    { "id": 3, "title": "Overflowing bin", "location": "Kisumu", "status": "Resolved", "updated": "2 days ago" }
+    { "id": 1, "reference": "NSF-260915-0043", "title": "Illegal dumping", "location": "soko mjinga", "status": "In review", "updated": "2 hours ago" },
+    { "id": 2, "reference": "NSF-260915-0042", "title": "Blocked drain", "location": "lando", "status": "Assigned", "updated": "Today" },
+    { "id": 3, "reference": "NSF-260982-0017", "title": "Overflowing bin", "location": "nyayo gardens", "status": "Resolved", "updated": "2 days ago" }
   ],
   "tickets": [
     { "id": 1, "name": "Illegal dump cleanup", "zone": "Zone A", "status": "Assigned", "due": "Today" },
@@ -18,7 +18,7 @@
       "text": "Community cleanup this Saturday from 8:00am to noon. Please bring gloves and reusable bags.",
       "likes": 18,
       "comments": 5,
-      "location": "Kibera"
+      "location": "soko mjinga"
     },
     {
       "id": 2,
@@ -28,7 +28,7 @@
       "text": "We are mapping blocked drains around the main market. Report any flood-prone areas immediately.",
       "likes": 24,
       "comments": 3,
-      "location": "Mombasa Road"
+      "location": "Think twice"
     }
   ],
   "pendingItems": [
@@ -37,8 +37,8 @@
     { "id": 3, "name": "Safety checklist photo", "meta": "Shift 2 · 10:30 AM", "status": "Failed" }
   ],
   "events": [
-    { "id": 1, "name": "Riverbank cleanup", "date": "Sat, 9:00 AM", "location": "Kisumu" },
-    { "id": 2, "name": "School waste drive", "date": "Mon, 1:30 PM", "location": "Nairobi" }
+    { "id": 1, "name": "Riverbank cleanup", "date": "Sat, 9:00 AM", "location": "Weavers" },
+    { "id": 2, "name": "School waste drive", "date": "Mon, 1:30 PM", "location": "PCEA Jitegemea" }
   ],
   "liveVehicles": [
     {

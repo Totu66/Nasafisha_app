@@ -13,6 +13,7 @@ export const useContractorsStore = defineStore('contractors', () => {
   const profile = ref<ContractorProfile | null>(null);
   const metrics = ref<ScorecardMetrics | null>(null);
   const weeklyTrend = ref<WeeklyTrendPoint[]>([]);
+  const trend12w = ref<WeeklyTrendPoint[]>([]);
   const evidenceTickets = ref<EvidenceTicket[]>([]);
   const selectedTicket = ref<EvidenceTicket | null>(null);
   const isAuditModalOpen = ref<boolean>(false);
@@ -73,13 +74,15 @@ export const useContractorsStore = defineStore('contractors', () => {
     isLoading.value = true;
     error.value = null;
     try {
-      const [metricsRes, trendRes] = await Promise.all([
+      const [metricsRes, trendRes, trend12wRes] = await Promise.all([
         contractorsApi.getScorecard(),
         contractorsApi.getWeeklyTrend(),
+        contractorsApi.getTwelveWeekTrend(),
       ]);
 
       if (metricsRes.success && metricsRes.data) metrics.value = metricsRes.data;
       if (trendRes.success && trendRes.data) weeklyTrend.value = trendRes.data;
+      if (trend12wRes.success && trend12wRes.data) trend12w.value = trend12wRes.data;
     } catch (err: any) {
       error.value = err.message || 'Failed to load SLA scorecard';
     } finally {
@@ -129,6 +132,7 @@ export const useContractorsStore = defineStore('contractors', () => {
     profile,
     metrics,
     weeklyTrend,
+    trend12w,
     evidenceTickets,
     selectedTicket,
     isAuditModalOpen,

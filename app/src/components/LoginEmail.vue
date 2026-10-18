@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, reactive, ref } from "vue";
+import { computed, onMounted, reactive } from "vue";
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength } from "@vuelidate/validators";
 import { useAuthStore } from "@/store";
@@ -103,18 +103,6 @@ const onSubmit = async () => {
     return authStore.login(formData);
   } else {
     console.log("Form not submitted");
-  }
-};
-
-const onSubmitDemo = async () => {
-  v$.value.$validate();
-  if (v$.value.$error) return;
-
-  try {
-    await authStore.login(formData);
-  } catch (error) {
-    if (error.response && error.response.data) {
-    }
   }
 };
 </script>

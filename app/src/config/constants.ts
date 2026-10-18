@@ -46,6 +46,9 @@ export const FIELD = {
   syncIntervalMs: 30_000,
 } as const;
 
+/** Max distance (metres) between the report location and the after-photo for a valid closure (AC-013.2). */
+export const CLOSURE_RADIUS_METERS = 100;
+
 /** Supported UI locales. */
 export const LOCALES = [
   { code: 'en', label: 'English' },
@@ -62,5 +65,6 @@ export default {
   SLA,
   PAGINATION,
   FIELD,
+  CLOSURE_RADIUS_METERS,
   LOCALES,
 };

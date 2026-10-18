@@ -3,12 +3,7 @@
     <!-- Brand panel -->
     <aside class="hidden lg:flex flex-col justify-between bg-[var(--ns-lake-900,#0F2E27)] p-10 text-white">
       <div class="flex items-center gap-3">
-        <div
-          class="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--ns-primary,#1F6F5C)] text-lg font-bold text-white"
-          aria-hidden="true"
-        >
-          N
-        </div>
+        <BrandLogo size="lg" :on-dark="true" />
         <div>
           <p class="text-xs uppercase tracking-[0.24em] text-emerald-300">{{ t('app') }}</p>
           <p class="text-sm text-emerald-100/80">{{ t('tagline') }}</p>
@@ -17,7 +12,7 @@
 
       <div class="space-y-4 max-w-md">
         <h1 class="text-3xl font-bold leading-tight">
-          Nakuru County waste operations, in one place.
+          A shared, evidenced record of county waste collection.
         </h1>
         <p class="text-sm leading-relaxed text-emerald-100/75">
           Report issues, track collections and review the shared SLA evidence ledger that keeps
@@ -48,12 +43,7 @@
     <div class="flex min-h-screen flex-col">
       <header class="flex items-center justify-between px-6 py-4 lg:px-10">
         <div class="flex items-center gap-3 lg:hidden">
-          <div
-            class="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--ns-primary,#1F6F5C)] text-sm font-bold text-white"
-            aria-hidden="true"
-          >
-            N
-          </div>
+          <BrandLogo size="sm" />
           <span class="text-sm font-semibold text-[var(--ns-lake-900,#0F2E27)]">{{ t('app') }}</span>
         </div>
 
@@ -81,7 +71,7 @@
 </template>
 
 <script setup lang="ts">
-import { AppIcon } from '../components/common';
+import { AppIcon, BrandLogo } from '../components/common';
 import { useI18n } from '../i18n';
 
 const { t, locale, toggleLocale } = useI18n();

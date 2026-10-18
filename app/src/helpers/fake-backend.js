@@ -59,7 +59,7 @@ function fakeBackend() {
       }
 
       function getUsers() {
-        // if (!isAuthenticated()) return unauthorized();
+        if (!isAuthenticated()) return unauthorized();
         return ok(users);
       }
 

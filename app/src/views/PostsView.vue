@@ -16,7 +16,7 @@
   
   /**Load data after mount */
   onMounted(() => {
-    // load();
+    load();
   });
   </script>
   

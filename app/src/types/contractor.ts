@@ -28,11 +28,15 @@ export interface ContractorProfile {
 }
 
 export interface ScorecardMetrics {
-  complianceRate: number;       // e.g. 96.4%
-  targetComplianceRate: number; // e.g. 95.0%
-  complianceDelta: number;      // e.g. +1.4%
-  mttrHours: number;            // Mean Time to Resolution: 3.2 hrs
-  mttrTargetHours: number;      // Target: 4.0 hrs
+  complianceRate: number;       // e.g. 88%
+  targetComplianceRate: number; // e.g. 90%
+  complianceDelta: number;      // e.g. +4 pts
+  mttrHours: number;            // Mean Time to Resolution: 50.4 hrs
+  mttrTargetHours: number;      // Target: 56 hrs
+  /** Average resolution time in days (scorecard headline figure). */
+  avgResolutionDays?: number;
+  /** Tickets still open and awaiting contractor action. */
+  openTickets?: number;
   firstTimeFixRate: number;     // e.g. 98.2%
   totalTicketsResolved: number; // e.g. 142
   slaBreachesCount: number;     // e.g. 5

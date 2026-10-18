@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { fetchCrewAccounts, fetchCrewStatus, resetCrewPin } from '@/api/workforce.api'
-import { authoriseDeviation, fetchOpenDeviationAlerts } from '@/api/fleet.api'
+import { authoriseDeviation, getDeviationAlerts } from '@/api/fleet.api'
 import { fetchPendingClosureApprovals } from '@/api/tickets.api'
 import type { CrewAccount, CrewStatus } from '@/types/crew'
 import type { DeviationAlert } from '@/types/deviationAlert'
@@ -24,7 +24,7 @@ export const useSupervisorStore = defineStore('supervisor', () => {
     try {
       const [c, a, p] = await Promise.all([
         fetchCrewStatus(),
-        fetchOpenDeviationAlerts(),
+        getDeviationAlerts(),
         fetchPendingClosureApprovals(),
       ])
       crews.value = c

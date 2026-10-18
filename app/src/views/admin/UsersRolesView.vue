@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
 import AccountsTable from '@/components/admin/AccountsTable.vue'
 import NewAccountForm from '@/components/admin/NewAccountForm.vue'
-import { useAccountsStore } from '@/store/accounts.store'
+import { useAccountsStore } from '@/store/account.store'
 import type { NewAccountPayload } from '@/types/account'
 import type { Role } from '@/config/roles'
 

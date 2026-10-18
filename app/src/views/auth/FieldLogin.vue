@@ -2,13 +2,11 @@
   <div class="min-h-screen grid lg:grid-cols-[44fr_56fr]">
     <!-- Brand panel -->
     <aside class="hidden lg:flex flex-col justify-between bg-[var(--ns-lake-900,#0F2E27)] p-12 text-white">
-      <div class="flex items-center gap-2.5">
-        <span
-          class="h-3 w-3 rounded-full bg-[var(--ns-sun-500,#F5D142)]"
-          aria-hidden="true"
-        />
-        <span class="text-lg font-extrabold tracking-tight">NASAFISHA</span>
-      </div>
+      <BrandLogo
+        size="md"
+        :with-text="false"
+        :on-dark="true"
+      />
 
       <div class="max-w-md space-y-5">
         <h1 class="text-4xl font-bold leading-[1.15]">
@@ -164,8 +162,8 @@
           <rect
             width="800"
             height="900"
-          fill="#081B17"
-          opacity="0.45"
+            fill="#081B17"
+            opacity="0.45"
           />
         </svg>
       </div>
@@ -196,12 +194,11 @@
       <main class="relative z-10 flex flex-1 items-center justify-center px-6 pb-12 lg:px-12">
         <div class="w-full max-w-sm rounded-2xl bg-white p-7 shadow-lg">
           <!-- Mobile brand -->
-          <div class="mb-5 flex items-center gap-2.5 lg:hidden">
-            <span
-              class="h-2.5 w-2.5 rounded-full bg-[var(--ns-sun-500,#F5D142)]"
-              aria-hidden="true"
+          <div class="mb-5 lg:hidden">
+            <BrandLogo
+              size="sm"
+              :with-text="false"
             />
-            <span class="text-base font-extrabold tracking-tight text-[var(--ns-lake-900,#0F2E27)]">NASAFISHA</span>
           </div>
 
           <div class="mb-6 flex flex-col items-center text-center">
@@ -305,7 +302,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { AppIcon, BaseAlert, BaseButton, BaseInput } from '../../components/common';
+import { AppIcon, BaseAlert, BaseButton, BaseInput, BrandLogo } from '../../components/common';
 import { useAuthStore } from '../../store/auth.store';
 import { useI18n } from '../../i18n';
 

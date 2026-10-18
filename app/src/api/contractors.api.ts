@@ -24,19 +24,37 @@ const MOCK_PROFILE: ContractorProfile = {
   vehicleFleetSize: 8,
 };
 
-// Mock Scorecard Metrics
+// Mock Scorecard Metrics (Figma contractor scorecard frame)
 const MOCK_METRICS: ScorecardMetrics = {
-  complianceRate: 96.4,
-  targetComplianceRate: 95.0,
-  complianceDelta: 1.4,
-  mttrHours: 3.2,
-  mttrTargetHours: 4.0,
+  complianceRate: 88,
+  targetComplianceRate: 90,
+  complianceDelta: 4,
+  mttrHours: 50.4,
+  mttrTargetHours: 56,
+  avgResolutionDays: 2.1,
+  openTickets: 9,
   firstTimeFixRate: 98.2,
   totalTicketsResolved: 142,
   slaBreachesCount: 5,
   activeVehiclesTracked: 7,
   totalVolumeTonnes: 184.6,
 };
+
+// Mock 12-week compliance baseline used by the scorecard line chart
+const MOCK_TREND_12W: WeeklyTrendPoint[] = [
+  { day: 'W1', date: '2026-07-27', complianceRate: 82.4, targetRate: 90, resolvedCount: 28, breachedCount: 4 },
+  { day: 'W2', date: '2026-08-03', complianceRate: 84.1, targetRate: 90, resolvedCount: 31, breachedCount: 3 },
+  { day: 'W3', date: '2026-08-10', complianceRate: 83.2, targetRate: 90, resolvedCount: 27, breachedCount: 4 },
+  { day: 'W4', date: '2026-08-17', complianceRate: 85.6, targetRate: 90, resolvedCount: 33, breachedCount: 2 },
+  { day: 'W5', date: '2026-08-24', complianceRate: 84.9, targetRate: 90, resolvedCount: 30, breachedCount: 3 },
+  { day: 'W6', date: '2026-08-31', complianceRate: 86.2, targetRate: 90, resolvedCount: 34, breachedCount: 2 },
+  { day: 'W7', date: '2026-09-07', complianceRate: 85.4, targetRate: 90, resolvedCount: 32, breachedCount: 2 },
+  { day: 'W8', date: '2026-09-14', complianceRate: 87.1, targetRate: 90, resolvedCount: 36, breachedCount: 1 },
+  { day: 'W9', date: '2026-09-21', complianceRate: 86.3, targetRate: 90, resolvedCount: 35, breachedCount: 2 },
+  { day: 'W10', date: '2026-09-28', complianceRate: 87.8, targetRate: 90, resolvedCount: 38, breachedCount: 1 },
+  { day: 'W11', date: '2026-10-05', complianceRate: 86.9, targetRate: 90, resolvedCount: 37, breachedCount: 1 },
+  { day: 'W12', date: '2026-10-12', complianceRate: 88.0, targetRate: 90, resolvedCount: 40, breachedCount: 1 },
+];
 
 // Mock Weekly Trend (Monday to Sunday)
 const MOCK_WEEKLY_TREND: WeeklyTrendPoint[] = [
@@ -220,6 +238,21 @@ export const contractorsApi = {
         success: true,
         data: MOCK_WEEKLY_TREND,
         message: 'Weekly compliance trend loaded',
+      };
+    }
+  },
+
+  /**
+   * Fetch 12-week compliance baseline for the scorecard line chart
+   */
+  async getTwelveWeekTrend(): Promise<ApiResponse<WeeklyTrendPoint[]>> {
+    try {
+      return await api.get<WeeklyTrendPoint[]>('/contractor/trend-12w');
+    } catch {
+      return {
+        success: true,
+        data: MOCK_TREND_12W,
+        message: '12-week compliance baseline loaded',
       };
     }
   },

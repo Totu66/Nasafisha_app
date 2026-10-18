@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '../../i18n'
 import { useAuthStore } from '@/store/auth.store'
-import { ADMIN_HOME_PATH } from '@/config/roles'
+import { homeRouteFor } from '@/config/roles'
 import { ERROR_CODES, getApiErrorCode } from '@/api/errorCodes'
 
 const auth = useAuthStore()
@@ -40,8 +40,8 @@ async function onSubmit() {
   errorKey.value = null
   isLoading.value = true
   try {
-    const user = await auth.loginAdmin({ email: email.value.trim(), password: password.value })
-    await router.push(safeRedirect() ?? ADMIN_HOME_PATH[user.role] ?? '/admin')
+    const user = await auth.login({ email: email.value.trim(), password: password.value, role: 'admin' })
+    await router.push(safeRedirect() ?? homeRouteFor(user.role))
   } catch (err) {
     errorKey.value = errorKeyFor(getApiErrorCode(err))
   } finally {
