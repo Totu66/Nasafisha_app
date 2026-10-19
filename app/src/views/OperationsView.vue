@@ -75,10 +75,16 @@
             <strong>{{ currentDate }}</strong>
           </div>
 
-            </div>
+        </div>
 
-          </div>
+      </header>
 
+
+      <!-- CONTENT -->
+      <section class="content">
+
+        <!-- KPI -->
+        <div class="kpi-grid">
 
           <div class="kpi-card">
 

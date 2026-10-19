@@ -3,7 +3,7 @@
     <!-- Brand panel -->
     <aside class="hidden lg:flex flex-col justify-between bg-[var(--ns-lake-900,#0F2E27)] p-12 text-white">
       <BrandLogo
-        size="md"
+        size="lg"
         :with-text="false"
         :on-dark="true"
       />

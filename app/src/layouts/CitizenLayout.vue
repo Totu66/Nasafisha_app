@@ -98,9 +98,6 @@
       <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-2">
         <p>© 2026 Nakuru County · {{ t('tagline') }}</p>
         <div class="flex items-center gap-3">
-          <BaseBadge :variant="online ? 'resolved' : 'stale'" size="sm" :dot="true">
-            {{ online ? t('offline.online') : t('offline.offline') }}
-          </BaseBadge>
           <button
             type="button"
             class="underline underline-offset-2 hover:text-[var(--ns-primary,#1F6F5C)]"
@@ -117,9 +114,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { AppIcon, BaseButton, BaseBadge, BrandLogo } from '../components/common';
+import { AppIcon, BaseButton, BrandLogo } from '../components/common';
 import { useAuthStore } from '../store/auth.store';
-import { useOnlineStatus } from '../composables/useOnlineStatus';
 import { useI18n } from '../i18n';
 
 interface NavItem {
@@ -145,7 +141,6 @@ const MOBILE: NavItem[] = [
 const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
-const { online } = useOnlineStatus();
 const { t, locale, toggleLocale } = useI18n();
 
 const primaryNav = computed(() => PRIMARY);
